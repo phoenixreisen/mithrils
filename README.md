@@ -1,15 +1,17 @@
-# Phoenix React Komponenten
+# WORK IN PROGRESS
 
-Sammlung von React Implementierungen für die Komponenten des Design Systems.
+# Phoenix Mithril Komponenten
+
+Sammlung von Mithril Implementierungen für die Komponenten des Design Systems.
 
 Die Komponenten sind Teil des [Phoenix Reisen Design-Systems](https://design-system.phoenixreisen.net).
 
 ## Installation
 
-[React](https://reactjs.org/) wird benötigt.
+[React](https://mithriljs.org/) wird benötigt.
 
 ```bash
-npm install --save @phoenixreisen/reacts
+npm install --save @phoenixreisen/mithrils
 ```
 
 ## Anwendung
