@@ -1,0 +1,16 @@
+.babelrc
+.hgignore
+.gitignore
+.tsconfig.json
+package-lock.json
+test-setup.ts
+rollup.config.js
+babel.config.js
+
+.hg/
+.git/
+spec/
+test/
+tests/
+node_modules/
+testfiles/

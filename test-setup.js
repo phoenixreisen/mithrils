@@ -1,0 +1,17 @@
+import ospec from 'ospec';
+import jsdom from 'jsdom';
+
+const dom = new jsdom.JSDOM('', {
+    // für `requestAnimationFrame`
+    pretendToBeVisual: true,
+});
+
+Object.assign(global, {
+    window: dom.window,
+    document: dom.window.document,
+    requestAnimationFrame: dom.window.requestAnimationFrame,
+});
+
+ospec.after(function() {
+    dom.window.close();
+});
