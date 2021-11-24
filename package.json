@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "prepublish": "npm run compile:demos && npm test",
-    "test": "npm run compile:tests && ospec --preload ./test-setup.js",
+    "test": "npm run compile:tests && npx ospec --preload ./test-setup.js",
     "compile:tests": "rm -rf ./testfiles/ && npx rollup -c rollup.config.tests.js",
     "compile:demos": "rm -rf ./docs/ && npx rollup -c rollup.config.js",
     "compile": "npm run compile:demos && npm run compile:tests"
