@@ -12,16 +12,20 @@ const components = [
     // 'accordion',
     // 'notification',
 ].map(current => {
+    const filename = 'index';
+
     return {
-        input: `./src/${current}/index.ts`,
+        input: `./src/${current}/${filename}.ts`,
 
         output: {
             format: 'es',
-            name: 'bundle',
-            file: `./testfiles/${current}/index.m.js`,
+            exports: 'default',
+            file: `./testfiles/${current}/${filename}.m.js`,
         },
         plugins: [
-            typescript()
+            typescript({
+                module: 'esnext'
+            })
         ],
         external: [
             'mithril'

@@ -7,8 +7,8 @@ import copy from 'rollup-plugin-copy';
 import url from '@rollup/plugin-url';
 
 const demos = [
+    'tabs',
     'loader',
-    // 'tabs',
     // 'modal',
     // 'header',
     // 'footer',
@@ -18,21 +18,23 @@ const demos = [
     // 'accordion',
     // 'notification',
 ].map(current => {
+    const foldername = 'demo';
+
     return {
-        input: `./src/${current}/demo/index.tsx`,
+        input: `./src/${current}/${foldername}/index.tsx`,
 
         output: {
             name: 'bundle',
             format: 'iife',
             sourcemap: true,
-            file: `./demo/${current}/demo.min.js`,
+            file: `./${foldername}/${current}/demo.min.js`,
         },
         plugins: [
             scss(),
             css(),
             typescript({
                 module: 'esnext',
-                sourceMap: true
+                sourceMap: true,
             }),
             commonjs(),
             resolve(),
@@ -44,7 +46,7 @@ const demos = [
                     {src:`./src/${current}/**/*.png`, dest:`./docs/${current}/`},
                     {src:`./src/${current}/**/*.jpg`, dest:`./docs/${current}/`},
                     {src:`./src/${current}/**/*.svg`, dest:`./docs/${current}/`},
-                    {src:`./src/${current}/docs/index.html`, dest:`./docs/${current}/`},
+                    {src:`./src/${current}/${foldername}/index.html`, dest:`./${foldername}/${current}/`},
                 ]
             })
         ]
