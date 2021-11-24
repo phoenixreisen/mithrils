@@ -22,7 +22,7 @@ const _checkParameters = (vnode: Vnode) => {
     const attrs = vnode.attrs as Attrs;
     const children = vnode.children as m.ChildArray;
     if (!attrs.tabs || !children || (attrs.tabs.length !== children.length)) {
-        throw 'amount of tabs and amount of components have to be equal.';
+        throw new Error('amount of tabs and amount of components have to be equal.');
     }
 };
 
@@ -46,8 +46,8 @@ export const Tabs: m.Component<Attrs, State> = {
         const children = vnode.children as m.ChildArray;
         const changeTab: Function = attrs.changeTab || _changeTab;
         const activeTab: number = attrs.activeTab && (attrs.activeTab < attrs.tabs.length)
-                        ? attrs.activeTab
-                        : state.activeTab;
+            ? attrs.activeTab
+            : state.activeTab;
 
         return (
             <article class="tabs">
