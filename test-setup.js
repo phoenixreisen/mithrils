@@ -9,6 +9,7 @@ const dom = new jsdom.JSDOM('', {
 Object.assign(global, {
     window: dom.window,
     document: dom.window.document,
+    HTMLElement: dom.window.HTMLElement,
     requestAnimationFrame: dom.window.requestAnimationFrame,
 });
 
