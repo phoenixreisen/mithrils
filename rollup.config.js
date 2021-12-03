@@ -18,6 +18,7 @@ const demos = [
     // 'banners', hat keine Demo
     // 'dropdown', hat keine Demo
 ].map(current => {
+    const target = 'docs';
     const foldername = 'demo';
 
     return {
@@ -27,7 +28,7 @@ const demos = [
             name: 'bundle',
             format: 'iife',
             sourcemap: true,
-            file: `./${foldername}/${current}/demo.min.js`,
+            file: `./${target}/${current}/demo.min.js`,
         },
         plugins: [
             scss(),
@@ -43,10 +44,10 @@ const demos = [
             }),
             copy({
                 targets: [
-                    {src:`./src/${current}/**/*.png`, dest:`./${foldername}/${current}/`},
-                    {src:`./src/${current}/**/*.jpg`, dest:`./${foldername}/${current}/`},
-                    {src:`./src/${current}/**/*.svg`, dest:`./${foldername}/${current}/`},
-                    {src:`./src/${current}/${foldername}/index.html`, dest:`./${foldername}/${current}/`},
+                    {src:`./src/${current}/**/*.png`, dest:`./${target}/${current}/`},
+                    {src:`./src/${current}/**/*.jpg`, dest:`./${target}/${current}/`},
+                    {src:`./src/${current}/**/*.svg`, dest:`./${target}/${current}/`},
+                    {src:`./src/${current}/${foldername}/index.html`, dest:`./${target}/${current}/`},
                 ]
             })
         ]
