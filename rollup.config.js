@@ -9,14 +9,14 @@ import url from '@rollup/plugin-url';
 const demos = [
     'tabs',
     'loader',
-    // 'modal',
-    // 'header',
-    // 'footer',
-    // 'slider',
-    // 'banners',
-    // 'dropdown',
-    // 'accordion',
-    // 'notification',
+    'modal',
+    'header',
+    'footer',
+    'slider',
+    'accordion',
+    'notification',
+    // 'banners', hat keine Demo
+    // 'dropdown', hat keine Demo
 ].map(current => {
     const foldername = 'demo';
 
@@ -43,9 +43,9 @@ const demos = [
             }),
             copy({
                 targets: [
-                    {src:`./src/${current}/**/*.png`, dest:`./docs/${current}/`},
-                    {src:`./src/${current}/**/*.jpg`, dest:`./docs/${current}/`},
-                    {src:`./src/${current}/**/*.svg`, dest:`./docs/${current}/`},
+                    {src:`./src/${current}/**/*.png`, dest:`./${foldername}/${current}/`},
+                    {src:`./src/${current}/**/*.jpg`, dest:`./${foldername}/${current}/`},
+                    {src:`./src/${current}/**/*.svg`, dest:`./${foldername}/${current}/`},
                     {src:`./src/${current}/${foldername}/index.html`, dest:`./${foldername}/${current}/`},
                 ]
             })

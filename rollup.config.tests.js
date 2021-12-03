@@ -1,19 +1,21 @@
 import typescript from '@rollup/plugin-typescript';
 import resolve from "@rollup/plugin-node-resolve";
 import copy from 'rollup-plugin-copy';
+import scss from 'rollup-plugin-scss';
 import url from '@rollup/plugin-url';
 
 const components = [
     'tabs',
+    'modal',
+    'slider',
     'loader',
     'header',
     'footer',
     'banners',
     'dropdown',
     'accordion',
-    // 'modal',
-    // 'slider',
-    // 'notification',
+    'fuzzy-input',
+    'notification',
 ].map(current => {
     const filename = 'index';
 
@@ -25,6 +27,7 @@ const components = [
             file: `./testfiles/${current}/${filename}.m.js`,
         },
         plugins: [
+            scss(),
             resolve(),
             typescript({
                 module: 'esnext',
@@ -42,6 +45,7 @@ const components = [
             })
         ],
         external: [
+            'swiper',
             'mithril',
             'clipboard',
             '@phoenixreisen/notification'
