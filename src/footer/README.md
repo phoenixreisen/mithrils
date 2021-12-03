@@ -1,36 +1,40 @@
 # Phoenix Footer
 
-Standard-Footer für diverse (standalone) Phoenix-Applikationen bereitstellen.
+Standard-Footer für diverse (standalone) Phoenix-Applikationen.
 
 Die Komponente ist Teil des [Phoenix Reisen Design-Systems](https://design-system.phoenixreisen.net).
 
 ## Demo
 
-https://phoenixreisen.github.io/footer/
+https://phoenixreisen.github.io/mithrils/footer/
 
-## Anwendung
+## Installation
 
-[Mithril](https://mithril.js.org/) wird benötigt.
+[Mithril](https://mithriljs.org/) wird benötigt.
 
 ```bash
-npm install --save @phoenixreisen/footer
+npm install --save @phoenixreisen/mithrils
 ```
 
 ## Anwendung
 
-#### Aufruf
-
-```ts
-import Footer from '@phoenixreisen/footer';
+```tsx
+import Footer from '@phoenixreisen/mithrils/footer';
 
 <Footer headline="für etwas Vorfreude" env="[staging|production]" />
-
-//oder
-
-m(Footer, { headline:"für etwas Vorfreude", env:"[staging|production]" });
 ```
 
 Wird für `env` "staging" angegeben, wird `border-top` gelb eingefärbt.
+
+## Demo für Github Page
+
+Mit folgendem Befehl werden alle Demos in den Ordner [../../docs](../../docs) gebaut. Dieser Ordner wird von Github zur Bereitstellung der Demos bzw. Github Pages genutzt.
+
+Möchte man zum Entwickeln nur bestimmte Demos bauen, kann man in der [rollup.config.js](../../rollup.config.js) nicht benötigte Demos auskommentieren, sollte sie vor dem `push` aber wieder einkommentieren.
+
+```bash
+npm run compile:demos
+```
 
 ## Test
 
@@ -41,21 +45,4 @@ npm run test
 
 ## Deployment
 
-```bash
-[npm install]                       # Abhängigkeiten installieren
-npm version [major|minor|patch]     # increase version x.x.x => major.minor.patch
-npm publish                         # upload to npm
-git push
-```
-
-## Github Page
-
-Demo kann manuell mittels Rollup gebaut werden und liegt komplett in `/docs`.
-
-```bash
-[npm install]
-npm run compile:example
-```
-
-Nach `git push` automatisch zu erreichen unter:
-https://phoenixreisen.github.io/footer/
+Deployed & published wird immer die ganze Sammlung. [Siehe hier](../../README.md).

@@ -1,25 +1,25 @@
 # Phoenix Tabs
 
-Phoenix "Web Tabs"-Komponente mit React implementiert.
+Tabs-Komponente mit Mithril implementiert.
 
 Die Komponente ist Teil des [Phoenix Reisen Design-Systems](https://design-system.phoenixreisen.net).
 
 ## Demo
 
-https://phoenixreisen.github.io/reacts/tabs/
+https://phoenixreisen.github.io/mithrils/tabs/
 
 ## Installation
 
-[React](https://reactjs.org/) wird benötigt.
+[Mithril](https://mithriljs.org/) wird benötigt.
 
 ```bash
-npm install --save @phoenixreisen/reacts
+npm install --save @phoenixreisen/mithrils
 ```
 
 ## Anwendung
 
 ```tsx
-import Tabs from '@phoenixreisen/reacts/tabs';
+import Tabs from '@phoenixreisen/mithrils/tabs';
 
 <Tabs tabs={['Tab 1', 'Tab 2']}>
     <div class="tab1">Tab 1</div>
@@ -41,7 +41,7 @@ npm run compile:demos
 
 ```bash
 [npm install]
-npm run test:tabs
+npm run test
 ```
 
 ## Deployment

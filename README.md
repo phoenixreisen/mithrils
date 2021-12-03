@@ -1,5 +1,3 @@
-# WORK IN PROGRESS
-
 # Phoenix Mithril Komponenten
 
 Sammlung von Mithril Implementierungen für die Komponenten des Design Systems.
@@ -8,7 +6,7 @@ Die Komponenten sind Teil des [Phoenix Reisen Design-Systems](https://design-sys
 
 ## Installation
 
-[React](https://mithriljs.org/) wird benötigt.
+[Mithril](https://mithriljs.org/) wird benötigt.
 
 ```bash
 npm install --save @phoenixreisen/mithrils
@@ -17,11 +15,11 @@ npm install --save @phoenixreisen/mithrils
 ## Anwendung
 
 ```ts
-import <KOMPONENTE> from '@phoenixreisen/reacts/<KOMPONENTE>';
+import <KOMPONENTE> from '@phoenixreisen/mithrils/<KOMPONENTE>';
 
 // zum Beispiel
-import Loader from '@phoenixreisen/reacts/loader';
-import Header from '@phoenixreisen/reacts/header';
+import Loader from '@phoenixreisen/mithrils/loader';
+import Header from '@phoenixreisen/mithrils/header';
 ```
 
 Weitere Informationen bzgl. Einbindung & Aufruf sind in der Readme der jeweiligen Komponente hinterlegt.

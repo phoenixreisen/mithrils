@@ -9,20 +9,19 @@ Die Komponente ist Teil des [Phoenix Reisen Design-Systems](https://design-syste
 
 ## Demo
 
-https://phoenixreisen.github.io/header/
+https://phoenixreisen.github.io/mithrils/header/
 
 ## Anwendung
 
-[Mithril](https://mithril.js.org/) wird benötigt.
+[Mithril](https://mithriljs.org/) wird benötigt.
 
 ```bash
-npm install --save @phoenixreisen/header
+npm install --save @phoenixreisen/mithrils
 ```
 
-```js
-import {Header, Topbar} from '@phoenixreisen/header';
+```tsx
+import { Header, Topbar } from '@phoenixreisen/mithrils/header';
 
-// JSX
 <Header
     version="Kabinenpräsente 1.0.0"             // wird standardmäßig unter dem Logo angezeigt
     url="https://www.phoenixreisen.com"         // verlinkt das Logo entsprechend
@@ -32,32 +31,25 @@ import {Header, Topbar} from '@phoenixreisen/header';
     toggleNav={() => console.info('toggled')}    // bewirkt, dass das Hamburger-Icon angezeigt wird
     toggleAvatar={() => console.info('toggled')} // bewirkt, dass das Avatar-Icon angezeigt wird
 />
+```
 
-// Hyperscript
-m(Header, {
-    version: "Kabinenpräsente 1.0.0",           // wird standardmäßig unter dem Logo angezeigt
-    url: "https://www.phoenixreisen.com"        // verlinkt das Logo entsprechend
-});
-m(Topbar, {
-    backUrl: 'https://www.phoenixreisen.com',
-    toggleNav: () => console.info('toggled'),    // bewirkt, dass das Hamburger-Icon angezeigt wird
-    toggleAvatar: () => console.info('toggled'), // bewirkt, dass das Avatar-Icon angezeigt wird
-});
+## Demo für Github Page
+
+Mit folgendem Befehl werden alle Demos in den Ordner [../../docs](../../docs) gebaut. Dieser Ordner wird von Github zur Bereitstellung der Demos bzw. Github Pages genutzt.
+
+Möchte man zum Entwickeln nur bestimmte Demos bauen, kann man in der [rollup.config.js](../../rollup.config.js) nicht benötigte Demos auskommentieren, sollte sie vor dem `push` aber wieder einkommentieren.
+
+```bash
+npm run compile:demos
 ```
 
 ## Test
 
 ```bash
 [npm install]
-
 npm run test
 ```
 
 ## Deployment
 
-```bash
-[npm install]                       # Ahängigkeiten installieren
-npm version [major|minor|patch]     # increase version x.x.x => major.minor.patch
-npm publish                         # upload to npm
-git push
-```
+Deployed & published wird immer die ganze Sammlung. [Siehe hier](../../README.md).

@@ -1,32 +1,26 @@
 # Phoenix Modal
 
-JS-/[Mithril](https://mithril.js.org/)-Komponente für das Phoenix Modal.
+[Mithril](https://mithril.org/)-Komponente für das Phoenix Modal.
 
 Die Komponente ist Teil des [Phoenix Reisen Design-Systems](https://design-system.phoenixreisen.net).
 
 ## Demo
 
-https://phoenixreisen.github.io/modal/
+https://phoenixreisen.github.io/mithrils/modal/
 
 ## Installation
 
-[Mithril](https://mithril.js.org/) wird benötigt.
+[Mithril](https://mithriljs.org/) wird benötigt.
 
 ```bash
-npm install --save @phoenixreisen/modal
+npm install --save @phoenixreisen/mithrils
 ```
 
 ## Anwendung
 
-```js
-// entweder CommonJS
-const Modal = require('@phoenixreisen/modal');
-
-// oder ES6+
-import Modal from '@phoenixreisen/modal';
+```tsx
+import Modal from '@phoenixreisen/mithrils/modal';
 ```
-
-#### Aufruf
 
 Das Modal selbst kümmert sich **nicht** um seinen Geöffnet-/Geschlossen-Status. Das muss außerhalb entschieden werden, indem eine Statusvariable dafür sorgt, ob das Modal gerendert wird oder nicht.
 
@@ -39,18 +33,7 @@ Wenn keine Größe angegeben ist, passt sich das Modal bis zu seiner `max-width`
 
 Auf Smartphones nimmt das Modal immer 90% der Breite ein und wird bis zu 90% hoch.
 
-```js
-// Hyperscript bzw. Javascript
-m(Modal, {
-    size: 's9090',                      // optional
-    title: "Mein Modal",                // optional
-    withCloseText: false,               // optional
-    content: m('div', 'CONTENT'),       // pflicht
-    footer: m('div', 'FOOTER'),         // optional
-    toggle: () => state.show = false,   // optional
-});
-
-// JSX
+```tsx
 <Modal title="Mein Modal" withCloseText={false}
     toggle={() => state.show = false}
     content={<div>CONTENT</div>}
@@ -58,30 +41,23 @@ m(Modal, {
 </Modal>
 ```
 
+## Demo für Github Page
+
+Mit folgendem Befehl werden alle Demos in den Ordner [../../docs](../../docs) gebaut. Dieser Ordner wird von Github zur Bereitstellung der Demos bzw. Github Pages genutzt.
+
+Möchte man zum Entwickeln nur bestimmte Demos bauen, kann man in der [rollup.config.js](../../rollup.config.js) nicht benötigte Demos auskommentieren, sollte sie vor dem `push` aber wieder einkommentieren.
+
+```bash
+npm run compile:demos
+```
+
 ## Test
 
 ```bash
-npm install
+[npm install]
 npm run test
 ```
 
 ## Deployment
 
-```bash
-[npm install]                       # Abhängigkeiten installieren
-npm version [major|minor|patch]     # increase version x.x.x => major.minor.patch
-npm publish                         # upload to npm
-git push
-```
-
-## Github Page
-
-Demo wird mittels Rollup gebaut.
-
-```bash
-[npm i]
-npm run compile:example
-```
-
-Nach dem `git push` zu erreichen unter:
-https://phoenixreisen.github.io/modal/
+Deployed & published wird immer die ganze Sammlung. [Siehe hier](../../README.md).

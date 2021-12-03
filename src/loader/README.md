@@ -4,47 +4,47 @@ Ladeanzeige(n) für API-Abfragen oder ähnliches.
 
 Die Komponente ist Teil des [Phoenix Reisen Design-Systems](https://design-system.phoenixreisen.net).
 
+## Demo
+
+https://phoenixreisen.github.io/mithrils/loader/
+
 ## Installation
 
-[Mithril](https://mithril.js.org/) wird benötigt.
+[Mithril](https://mithriljs.org/) wird benötigt.
 
 ```bash
-npm install --save @phoenixreisen/loader
+npm install --save @phoenixreisen/mithrils/loader
 ```
 
 ## Anwendung
 
-```js
-// entweder CommonJS
-const Loader = require('@phoenixreisen/loader');
+```tsx
+import Loader from '@phoenixreisen/mithrils/loader';
 
-// oder ES6+
-import Loader from '@phoenixreisen/loader';
+<Loader />
+
+// oder
+
+<Loader type="overlay" text="Daten werden geladen..." />
 ```
 
-#### Aufruf
+## Demo für Github Page
 
-```js
-// Hyperscript
-m(Loader);
-m(Loader, { type: 'overlay', text: 'Daten werden geladen...' });
+Mit folgendem Befehl werden alle Demos in den Ordner [../../docs](../../docs) gebaut. Dieser Ordner wird von Github zur Bereitstellung der Demos bzw. Github Pages genutzt.
 
-// JSX
-<Loader />
-<Loader type="overlay" text="Daten werden geladen..." />
+Möchte man zum Entwickeln nur bestimmte Demos bauen, kann man in der [rollup.config.js](../../rollup.config.js) nicht benötigte Demos auskommentieren, sollte sie vor dem `push` aber wieder einkommentieren.
+
+```bash
+npm run compile:demos
 ```
 
 ## Test
 
 ```bash
-npm install
-npm test
+[npm install]
+npm run test
 ```
 
 ## Deployment
 
-```bash
-npm version [major|minor|patch]     # increase version x.x.x => major.minor.patch
-npm publish                         # upload to npm
-git push
-```
+Deployed & published wird immer die ganze Sammlung. [Siehe hier](../../README.md).
