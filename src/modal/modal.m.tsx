@@ -18,7 +18,7 @@ let $body: HTMLElement | null = null;
 
 //--- Komponente -----
 
-export const Modal: m.Component<Attrs> = {
+export const Modal = {
 
     oninit(v: m.Vnode<Attrs>) {
         const attrs = v.attrs as Attrs;
@@ -51,12 +51,15 @@ export const Modal: m.Component<Attrs> = {
     },
 
     view(v: m.Vnode<Attrs>) {
-        const {attrs} = v
-        const {content, footer} = attrs;
-        const {toggle, title, size, withCloseText} = attrs;
+        const { attrs } = v
+        const { content, footer } = attrs;
+        const { toggle, title, size, withCloseText } = attrs;
+
+        // Per parameter given modal size
+        const sizeClass = size ? Sizes[size] : null;
 
         return ([
-            <article class={`modal modal--visible ${size || ''}`}>
+            <article class={`modal modal--visible ${sizeClass}`}>
                 <div class="modal__header">
                     <span class="modal__headline">
                         {title || ''}
