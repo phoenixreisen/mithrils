@@ -13,6 +13,7 @@ const demos = [
     'header',
     'footer',
     'slider',
+    'timeline',
     'accordion',
     'notification',
     // 'banners', hat keine Demo
