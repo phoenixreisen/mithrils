@@ -13,6 +13,7 @@ const demos = [
     'header',
     'footer',
     'slider',
+    'tooltip',
     'timeline',
     'accordion',
     'notification',

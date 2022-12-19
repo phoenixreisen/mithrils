@@ -13,6 +13,7 @@ const components = [
     'footer',
     'banners',
     'dropdown',
+    'tooltip',
     'timeline',
     'accordion',
     'fuzzy-input',
