@@ -6,7 +6,7 @@ Die Komponente ist Teil des [Phoenix Reisen Design-Systems](https://design-syste
 
 ## Demo
 
-https://phoenixreisen.github.io/mithrils
+https://phoenixreisen.github.io/mithrils/tooltip
 
 ## Installation
 
