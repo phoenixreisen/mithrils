@@ -1,24 +1,29 @@
-import './swiper.style.scss';
-import Swiper, { Navigation, Pagination, Scrollbar } from 'swiper';
 import m from 'mithril';
+import './swiper.style.scss';
+
+import Swiper, { 
+    Navigation, 
+    Pagination, 
+    Scrollbar 
+} from 'swiper';
 
 Swiper.use([ Navigation, Pagination, Scrollbar ]);
 
-//--- Types -----
+//--- View Types -----
 
-type AttrProps = {
+type Attrs = {
     slides: Array<m.Vnode<any, any>>,
 }
 
-type StateProps = {
+type State = {
     slider: Swiper
 }
 
-//--- Komponente -----
+//--- View -----
 
-export const Slider: m.Component<AttrProps, StateProps> = {
+export const Slider: m.Component<Attrs, State> = {
 
-    oncreate(vnode: m.VnodeDOM<AttrProps, StateProps>) {
+    oncreate(vnode: m.VnodeDOM<Attrs, State>) {
         const { state } = vnode;
         state.slider = new Swiper('.swiper', {
             pagination: {
@@ -41,12 +46,12 @@ export const Slider: m.Component<AttrProps, StateProps> = {
         });
     },
 
-    onupdate({state}: m.Vnode<AttrProps, StateProps>) {
+    onupdate({ state }: m.Vnode<Attrs, State>) {
         const { slider } = state;
         slider.update?.();
     },
 
-    view({attrs}: m.Vnode<AttrProps>) {
+    view({ attrs }: m.Vnode<Attrs>) {
         const { slides } = attrs;
         return (
             <div class="swiper">
@@ -62,6 +67,6 @@ export const Slider: m.Component<AttrProps, StateProps> = {
             </div>
         );
     }
-}
+};
 
-export default Slider;
+export default Slider as any;

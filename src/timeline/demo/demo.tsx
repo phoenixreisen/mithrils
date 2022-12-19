@@ -1,12 +1,13 @@
 import TimeLine from '../timeline.m';
 import m from 'mithril';
 
-export const Demo = {
+export const Demo: m.Component = {
     
     view() {
         const side = new Map<number, 'left'|'right'>();
-        side.set(2, 'right');
-        side.set(3, 'left');
+
+        side.set(2, 'right'); // 3. Element explizit auf rechte Seite
+        side.set(3, 'left'); // 4. Element explizit auf linke Seite
 
         return ([
             <h3>Links ausgerichtet</h3>,
@@ -59,4 +60,4 @@ export const Demo = {
     }
 };
 
-export default Demo;
+export default Demo as any;

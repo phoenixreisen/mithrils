@@ -1,10 +1,7 @@
-import TabsView from '../tabs.m';
+import Tabs from '../tabs.m';
 import m from 'mithril';
 
-/** TS Workaround */
-const Tabs = TabsView as any;
-
-export const Demo = {
+export const Demo: m.Component = {
     view() {
         return (
             <Tabs tabs={['Tab I', 'Tab II', 'Tab III']}>
@@ -16,4 +13,4 @@ export const Demo = {
     }
 };
 
-export default Demo;
+export default Demo as any;

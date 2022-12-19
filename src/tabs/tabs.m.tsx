@@ -1,6 +1,6 @@
 import m from 'mithril';
 
-//--- Types -----
+//--- View Types -----
 
 interface Attrs {
     initTab: number,
@@ -16,7 +16,7 @@ interface State {
 type Vnode = m.Vnode<Attrs, State>;
 type VnodeDom = m.VnodeDOM<Attrs, State>;
 
-//--- Functions -----
+//--- View Funktionen -----
 
 const _checkParameters = (vnode: Vnode) => {
     const attrs = vnode.attrs as Attrs;
@@ -29,6 +29,8 @@ const _checkParameters = (vnode: Vnode) => {
 const _changeTab = (vnode: Vnode, tabnr: number) => {
     vnode.state.activeTab = tabnr;
 };
+
+//--- View -----
 
 export const Tabs: m.Component<Attrs, State> = {
 
@@ -76,4 +78,4 @@ export const Tabs: m.Component<Attrs, State> = {
     },
 };
 
-export default Tabs;
+export default Tabs as any;

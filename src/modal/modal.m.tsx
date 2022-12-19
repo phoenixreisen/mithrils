@@ -1,7 +1,7 @@
 import Sizes from './modal.sizes';
 import m from 'mithril';
 
-//--- Types -----
+//--- View Types -----
 
 interface Attrs {
     title: string,
@@ -12,13 +12,13 @@ interface Attrs {
     toggle: () => void,
 }
 
-//--- Variablen & Nodes -----
+//--- View Variablen & Nodes -----
 
 let $body: HTMLElement | null = null;
 
-//--- Komponente -----
+//--- View -----
 
-export const Modal = {
+export const Modal: m.Component<Attrs> = {
 
     oninit(v: m.Vnode<Attrs>) {
         const attrs = v.attrs as Attrs;
@@ -85,6 +85,6 @@ export const Modal = {
             <article class="modal__bg"></article>,
         ]);
     },
-} as any;
+};
 
-export default Modal;
+export default Modal as any;

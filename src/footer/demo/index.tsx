@@ -1,4 +1,4 @@
-import {Demo} from './footer.demo';
+import { Demo } from './footer.demo';
 import m from 'mithril';
 
 const Root: m.Component<{}> = {

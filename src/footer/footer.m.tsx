@@ -1,7 +1,7 @@
 import Config from './config';
 import m from 'mithril';
 
-//--- Icons -----
+//--- View Icons -----
 
 import ICON_TV from './icons/tv.png';
 import ICON_YT from './icons/youtube.png';
@@ -13,7 +13,7 @@ import ICON_TWITTER from './icons/twitter.png';
 import ICON_PHX from './icons/phoenixreisen.jpg';
 import ICON_HASH from './icons/insta-hashtag.png';
 
-//--- Types -----
+//--- View Types -----
 
 interface Attrs {
     env?: string,
@@ -21,13 +21,13 @@ interface Attrs {
     urls?: {[name: string]: string},
 }
 
-//--- Komponente -----
+//--- View -----
 
 export const Footer: m.Component<Attrs> = {
 
-    view: ({attrs}: m.Vnode<Attrs>) => {
-        const {urls:interns} = Config;
-        const {headline, env, urls:externs} = attrs;
+    view: ({ attrs }: m.Vnode<Attrs>) => {
+        const { urls:interns } = Config;
+        const { headline, env, urls:externs } = attrs;
 
         // defaults mit ext. Parametern mergen
         const urls = Object.assign({}, interns, externs);
@@ -38,6 +38,7 @@ export const Footer: m.Component<Attrs> = {
                     <div class="mb1">
                         <strong>{headline || 'Sie finden uns auch auf'}</strong>
                     </div>
+
                     <div class="footer__media-icons">
                         <a href={urls.PHXWEBSITE} title="Phoenix Reisen" target="_blank" rel="noopener noreferrer" class="desktop-only">
                             <img src={ICON_PHX} alt="Phoenix Reisen Website" />
@@ -62,6 +63,7 @@ export const Footer: m.Component<Attrs> = {
                         </a>
                     </div>
                 </div>
+
                 <div class="mt2 tc footer__text">
                     <div><small>Wir sind für Sie da</small></div>
                     <div>
@@ -71,6 +73,7 @@ export const Footer: m.Component<Attrs> = {
                         <small>montags bis freitags von 09:00 bis 18:00 Uhr</small>
                     </div>
                 </div>
+
                 <div class="wrapper wrapper--large footer__links-wrapper">
                     <ul class="footer__links noprint">
                         <li>
@@ -116,6 +119,7 @@ export const Footer: m.Component<Attrs> = {
                             </a>
                         </li>
                     </ul>
+
                     <div class="footer__logos">
                         <span><img src={ICON_DRV} /></span>
                         <span><img src={ICON_QG} /></span>
@@ -126,4 +130,4 @@ export const Footer: m.Component<Attrs> = {
     },
 };
 
-export default Footer;
+export default Footer as any;

@@ -16,9 +16,9 @@ interface State {
     modifier: 'timeline--static' | 'timeline--animated' | ''
 }
 
-//--- Variables -----
+//--- View Variables -----
 
-//--- Functions -----
+//--- View Functions -----
 
 //--- View -----
 

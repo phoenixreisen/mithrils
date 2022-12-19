@@ -3,11 +3,11 @@ import { events, ID, MAXLENGTH } from './fuzzy-input.consts';
 import { Attrs, State } from './fuzzy-input.types';
 import m from 'mithril';
 
-//--- Komponente -----
+//--- View -----
 
-export const FuzzyInput = {
+export const FuzzyInput: m.Component<Attrs, State> = {
 
-    oninit({state}: m.Vnode<Attrs, State>) {
+    oninit({ state }: m.Vnode<Attrs, State>) {
         state.value = '';
         state.error = null;
         state.result = null;
@@ -15,7 +15,7 @@ export const FuzzyInput = {
         state.focused = -1;
     },
 
-    oncreate({state, attrs}: m.Vnode<Attrs, State>) {
+    oncreate({ state, attrs }: m.Vnode<Attrs, State>) {
         events.ESCAPE = (e: KeyboardEvent) => reset(state, e);
         events.ARROW = (e: KeyboardEvent) => focus(state, attrs, e);
         document.body.addEventListener('keyup', events.ESCAPE, true);
@@ -29,7 +29,7 @@ export const FuzzyInput = {
             document.body.removeEventListener('keydown', events.ARROW, true);
     },
 
-    view({state, attrs}: m.Vnode<Attrs, State>) {
+    view({ state, attrs }: m.Vnode<Attrs, State>) {
         const { loading, result, error } = state;
         const { label, maxLength, placeholder, inText } = attrs;
 
@@ -40,22 +40,24 @@ export const FuzzyInput = {
 
         return (
             <article class="fuzzy-search fuzzy-show-result">
-                {showErrormsg &&
+                {showErrormsg && (
                     <div class="pulse animated fuzzy-error">
                         <div class="alert alert--danger alert--icon">
                             <i class="fas fa-times"></i>
                             {attrs.errormsg || 'Oha, während der Abfrage ist ein Fehler aufgetreten.'}
                         </div>
                     </div>
-                }
-                {showWarnmsg &&
+                )}
+
+                {showWarnmsg && (
                     <div class="pulse animated fuzzy-warning">
                         <div class="alert alert--warning alert--icon">
                             <i class="fas fa-exclamation-triangle"></i>
                             {attrs.warnmsg || 'Ungültige Eingabe.'}
                         </div>
                     </div>
-                }
+                )}
+
                 <div class={attrs.withButton ? 'fuzzy-with-button':''}>
                     <label class={`textfield fuzzy-input ${attrs.disabled ? 'disabled':''}`}>
                         <input
@@ -73,12 +75,13 @@ export const FuzzyInput = {
                             {label || 'Suche'}
                         </span>
                     </label>
-                    {attrs.withButton &&
+
+                    {attrs.withButton && (
                         <button type="button" class="btn btn--secondary"
                             onclick={() => callQuery(state, attrs)}>
                             <i class="fas fa-list"></i>
                         </button>
-                    }
+                    )}
                 </div>
 
                 {showResultlist && [
@@ -103,6 +106,6 @@ export const FuzzyInput = {
             </article>
         );
     }
-} as any;
+};
 
 export default FuzzyInput as any;

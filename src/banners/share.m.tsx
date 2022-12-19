@@ -2,7 +2,7 @@ import { notes } from '@phoenixreisen/notification';
 import ClipboardJS from 'clipboard';
 import m from 'mithril';
 
-//--- Types ------
+//--- View Types ------
 
 interface Attrs {
     url: string,
@@ -18,7 +18,7 @@ interface State {
     showClipboardMsg: boolean,
 }
 
-//--- Functions -----
+//--- View Funktionen -----
 
 const saveToClipboard = (state: State) => {
     notes.add({text: 'In die Zwischenablage kopiert.'});
@@ -29,11 +29,11 @@ const saveToClipboard = (state: State) => {
     }, 2500);
 }
 
-//--- Component -----
+//--- View -----
 
 export const Sharebanner: m.Component<Attrs> = {
 
-    oninit({state}: m.Vnode<Attrs, State>) {
+    oninit({ state }: m.Vnode<Attrs, State>) {
         state.showClipboardMsg = false;
     },
 
@@ -41,10 +41,10 @@ export const Sharebanner: m.Component<Attrs> = {
         new ClipboardJS('.share-clipboard');
     },
 
-    view({state, attrs}: m.Vnode<Attrs, State>) {
-        const {noBackground} = attrs;
-        const {showClipboardMsg} = state;
-        const {headline, appname, urltext, mailsubject, hashtags} = attrs;
+    view({ state, attrs }: m.Vnode<Attrs, State>) {
+        const { noBackground } = attrs;
+        const { showClipboardMsg } = state;
+        const { headline, appname, urltext, mailsubject, hashtags } = attrs;
         const url = attrs.url || location.href;
 
         return (
@@ -82,6 +82,6 @@ export const Sharebanner: m.Component<Attrs> = {
             </article>
         );
     }
-} as any;
+};
 
 export default Sharebanner as any;

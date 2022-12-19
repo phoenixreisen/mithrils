@@ -1,6 +1,8 @@
 import logo from './phx.logo.svg';
 import m from 'mithril';
 
+//--- View Types -----
+
 interface Attrs {
     url?: string,
     tab?: string,
@@ -9,12 +11,14 @@ interface Attrs {
     toggleNav?: () => void,
 }
 
+//--- View -----
+
 export const Header: m.Component<Attrs> = {
 
-    view: ({attrs}) => {
-        const {toggleNav} = attrs as Attrs;
-        const {version, url, title, tab} = attrs as Attrs;
-        const {protocol, host, pathname} = location as Location;
+    view: ({ attrs }) => {
+        const { toggleNav } = attrs as Attrs;
+        const { version, url, title, tab } = attrs as Attrs;
+        const { protocol, host, pathname } = location as Location;
 
         const href = !url
             ? `${protocol || ''}//${host}${(pathname?.length > 1) ? pathname : ''}`
@@ -28,23 +32,23 @@ export const Header: m.Component<Attrs> = {
                     </picture>
                 </a>
 
-                {version ?
+                {!!version && (
                     <div class="header__version">
                         {version}
                     </div>
-                    : ''}
+                )}
 
-                {toggleNav ?
+                {!!toggleNav && (
                     <div class="header__nav-btn">
                         <a href="javascript:" title="Navigation ein- & ausblenden" class="nav-btn noprint"
                             onclick={() => toggleNav()}>
                             <i class="fas fa-bars"></i>
                         </a>
                     </div>
-                    : ''}
+                )}
             </article>
         );
     },
 };
 
-export default Header;
+export default Header as any;

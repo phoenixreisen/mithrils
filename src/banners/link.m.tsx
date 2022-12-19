@@ -1,6 +1,6 @@
 import m from 'mithril';
 
-//--- Types -----
+//--- View Types -----
 
 interface Attrs {
     text: string,
@@ -8,17 +8,17 @@ interface Attrs {
     urltext: string,
 }
 
-//--- Component -----
+//--- View -----
 
 export const Linkbanner: m.Component<Attrs> = {
 
-    oninit({attrs}: m.Vnode<Attrs>) {
+    oninit({ attrs }: m.Vnode<Attrs>) {
         if(!attrs.url || !attrs.urltext) {
             throw 'Need at least "url" and "urltext" as parameter. See Readme.';
         }
     },
 
-    view({attrs}: m.Vnode<Attrs>) {
+    view({ attrs }: m.Vnode<Attrs>) {
         return(
             <article class="link-banner mv5">
                 <div class="link-banner__textbox">
@@ -34,6 +34,6 @@ export const Linkbanner: m.Component<Attrs> = {
             </article>
         );
     }
-} as any;
+};
 
 export default Linkbanner as any;

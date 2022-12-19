@@ -1,16 +1,16 @@
-import {Port1, Item1, Item2, Item3} from './accordeon.contents';
-import {Accordion} from '../accordion.m';
+import { Port1, Item1, Item2, Item3 } from './accordeon.contents';
+import Accordion from '../accordion.m';
 import m from 'mithril';
 
-// Variablen
+//--- View Variablen -----
 
 const items = [
     Port1, Item1, Item2, Item3
 ];
 
-//--- Komponente -----
+//--- View -----
 
-export const Demo = {
+export const Demo: m.Component = {
     view() {
         return (
             <div class="acc-demo">

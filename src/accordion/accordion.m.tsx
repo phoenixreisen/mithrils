@@ -66,14 +66,14 @@ function toggle(state: State, attrs: Attrs, itemnr: number, type: ItemType) {
 
 //--- Komponente -----
 
-export const Accordion = {
+export const Accordion: m.Component<Attrs, State> = {
 
-    oninit({state}: m.Vnode<Attrs, State>) {
+    oninit({ state }: m.Vnode<Attrs, State>) {
         state.openPrimary = { itemnr: -1, maxheight: 0 };
         state.openSecondary = { itemnr: -1, maxheight: 0 };
     },
 
-    view({state, attrs}: m.Vnode<Attrs, State>) {
+    view({ state, attrs }: m.Vnode<Attrs, State>) {
         const {openPrimary, openSecondary} = state;
 
         return (
@@ -103,6 +103,6 @@ export const Accordion = {
             </section>
         );
     },
-} as any;
+};
 
-export default Accordion;
+export default Accordion as any;

@@ -1,6 +1,6 @@
 import m from 'mithril';
 
-//--- Types -----
+//--- View Types -----
 
 export interface NoteObject {
     text: string | Element | JSX.Element | m.Vnode,
@@ -21,7 +21,7 @@ export type NotesAttrs = {
     list: Set<NoteObject>
 }
 
-//--- Variablen -----
+//--- View Variablen -----
 
 // Zeit, bis die Meldung wieder ausgeblendet wird
 // mit 100ms extra zur CSS Transition
@@ -43,10 +43,10 @@ export const enum STATUS {
     success = 'success',
 }
 
-//--- Komponenten -----
+//--- View(s) -----
 
 // Ausgabe einer Notification
-export const Notification: m.Component<NoteAttrs, NoteState> = {
+const Note: m.Component<NoteAttrs, NoteState> = {
 
     oninit({attrs, state}) {
         if(!attrs.toggle || !attrs.text) {
@@ -59,8 +59,8 @@ export const Notification: m.Component<NoteAttrs, NoteState> = {
                 : ICONS.info;
     },
 
-    oncreate({attrs}) {
-        const {toggle} = attrs;
+    oncreate({ attrs }) {
+        const { toggle } = attrs;
 
         setTimeout(() => {
             toggle();
@@ -68,8 +68,8 @@ export const Notification: m.Component<NoteAttrs, NoteState> = {
         }, SHOWTIMER);
     },
 
-    view({attrs}) {
-        const {status, text, toggle} = attrs;
+    view({ attrs }) {
+        const { status, text, toggle } = attrs;
 
         return (
             <article class={`notification notification--${status || 'primary'}`}>
@@ -87,13 +87,12 @@ export const Notification: m.Component<NoteAttrs, NoteState> = {
 // Ausgabe aller Notifications
 export const Notifications: m.Component<NotesAttrs> = {
 
-    view({attrs}) {
-        const {list} = attrs;
-        const NoteView = Notification as any;
+    view({ attrs }) {
+        const { list } = attrs;
 
         return ([
             Array.from(list).map((note: NoteObject) =>
-                <NoteView
+                <Notification
                     text={note.text}
                     status={note.status}
                     toggle={() => list.delete(note)}
@@ -103,4 +102,5 @@ export const Notifications: m.Component<NotesAttrs> = {
     }
 };
 
+export const Notification = Note as any;
 export default Notifications;

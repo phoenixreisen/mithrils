@@ -1,11 +1,9 @@
-import FooterView from '../footer.m';
+import Footer from '../footer.m';
 import m from 'mithril';
 
-const Footer = FooterView as any;
+//--- View -----
 
-//--- Komponente -----
-
-export const Demo = {
+export const Demo: m.Component = {
     view() {
         return (
             <div class="footer-demo">
@@ -15,4 +13,4 @@ export const Demo = {
     }
 };
 
-export default Demo;
+export default Demo as any;

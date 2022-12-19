@@ -1,17 +1,31 @@
-import {Header, Topbar} from '../index';
+import { Header, Topbar } from '../index';
 import m from 'mithril';
+
+//--- View Types -----
+
+type State = {
+    open: boolean
+}
+
+type Attrs = {
+    //...
+}
+
+//--- View Funktionen -----
 
 const toggleNav = (state) => {
     state.open = !state.open;
 };
 
-const Root = {
+//--- View -----
 
-    oninit({state}) {
+const Root: m.Component<Attrs, State> = {
+
+    oninit({ state }) {
         state.open = false;
     },
 
-    view({state}) {
+    view({ state }) {
         return ([
             m('div', {class: 'wrapper wrapper--large'},
                 m(Header, {
@@ -27,6 +41,6 @@ const Root = {
             }),
         ]);
     },
-} as any;
+};
 
 m.mount(document.querySelector('.example-app') as Element, Root);

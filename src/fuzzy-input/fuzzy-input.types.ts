@@ -1,4 +1,4 @@
-//--- Types -----
+//--- View Types -----
 
 export type Attrs = {
     id?: string,

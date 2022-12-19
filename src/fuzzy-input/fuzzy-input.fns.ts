@@ -2,7 +2,7 @@ import { MINLENGTH, THROTTLING, ID } from './fuzzy-input.consts';
 import { State, Attrs } from './fuzzy-input.types';
 import m from 'mithril';
 
-//--- Funktionen -----
+//--- View Funktionen -----
 
 export function setValue(input: string, state:State, attrs: Attrs): void {
     attrs.oninput ? attrs.oninput(input) : Object.assign(state, {value: input});
@@ -132,7 +132,7 @@ export function load(choice: string, state: State, attrs: Attrs): Promise<unknow
 }
 
 export function focus(state: State, attrs: Attrs, e: KeyboardEvent, callback = search): void {
-    const {focused:current, result, value} = state;
+    const { focused:current, result, value } = state;
 
     const move = {
         'ArrowUp': () => {

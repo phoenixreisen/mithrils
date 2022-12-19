@@ -1,6 +1,6 @@
 import m from 'mithril';
 
-//--- Types -----
+//--- View Types -----
 
 export interface Attrs {
     type?: string;
@@ -8,12 +8,12 @@ export interface Attrs {
     iconname?: string;
 };
 
-//--- Component -----
+//--- View -----
 
 export const Loader: m.Component<Attrs> = {
 
-    view({attrs}: m.Vnode<Attrs>) {
-        const {type, text, iconname} = attrs;
+    view({ attrs }: m.Vnode<Attrs>) {
+        const { type, text, iconname } = attrs;
 
         if(type && type === 'overlay') {
             return (
@@ -38,4 +38,4 @@ export const Loader: m.Component<Attrs> = {
     }
 };
 
-export default Loader;
+export default Loader as any;

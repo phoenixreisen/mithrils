@@ -1,13 +1,10 @@
 import m from 'mithril';
 import Loader from '..';
 
-/** TS workaround */
-const LoaderView = Loader as any;
-
-const Root = {
+const Root: m.Component = {
     view() {
         return ([
-           <LoaderView text="Daten werden geladen..." />
+           <Loader text="Daten werden geladen..." />
         ]);
     },
 };

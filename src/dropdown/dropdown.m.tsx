@@ -1,6 +1,6 @@
 import m from 'mithril';
 
-//--- Types -----
+//--- View Types -----
 
 interface Attrs {
     isOpen: boolean,
@@ -13,7 +13,7 @@ interface State {
     isOpen: boolean,
 }
 
-//--- Funktionen -----
+//--- View Funktionen -----
 
 export const closeOnEsc = (state: State, e: KeyboardEvent) => {
     if(e?.keyCode === 27) {
@@ -22,11 +22,11 @@ export const closeOnEsc = (state: State, e: KeyboardEvent) => {
     }
 };
 
-//--- Komponente -----
+//--- View -----
 
 export const Dropdown: m.Component<Attrs> = {
 
-    oninit({attrs, state}: m.Vnode<Attrs, State>) {
+    oninit({ attrs, state }: m.Vnode<Attrs, State>) {
         state.isOpen = attrs.isOpen || false;
         document.body.addEventListener('keydown', e => {
             closeOnEsc(state, e);
@@ -34,8 +34,8 @@ export const Dropdown: m.Component<Attrs> = {
     },
 
     view(v: m.Vnode<Attrs, State>) {
-        const {isOpen} = v.state as State;
-        const {title, icon, cssclass} = v.attrs as Attrs;
+        const { isOpen } = v.state as State;
+        const { title, icon, cssclass } = v.attrs as Attrs;
         const children = v.children as m.ChildArray;
 
         return(
@@ -58,4 +58,4 @@ export const Dropdown: m.Component<Attrs> = {
     }
 }
 
-export default Dropdown;
+export default Dropdown as any;
