@@ -13,7 +13,7 @@ https://phoenixreisen.github.io/mithrils/loader/
 [Mithril](https://mithriljs.org/) wird benötigt.
 
 ```bash
-npm install --save @phoenixreisen/mithrils/loader
+npm install --save @phoenixreisen/mithrils
 ```
 
 ## Anwendung
