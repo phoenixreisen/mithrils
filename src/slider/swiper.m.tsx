@@ -1,5 +1,4 @@
 import m from 'mithril';
-import './swiper.style.scss';
 
 import Swiper, { 
     Navigation, 
