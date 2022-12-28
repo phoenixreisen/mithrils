@@ -1,8 +1,6 @@
 import typescript from '@rollup/plugin-typescript';
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from '@rollup/plugin-commonjs';
-import css from 'rollup-plugin-css-only';
-import scss from 'rollup-plugin-scss';
 import copy from 'rollup-plugin-copy';
 import url from '@rollup/plugin-url';
 
@@ -17,8 +15,8 @@ const demos = [
     'timeline',
     'accordion',
     'notification',
-    // 'banners', hat keine Demo
-    // 'dropdown', hat keine Demo
+    // 'banners', keine Demo
+    // 'dropdown', keine Demo
 ].map(current => {
     const target = 'docs';
     const foldername = 'demo';
@@ -33,11 +31,13 @@ const demos = [
             file: `./${target}/${current}/demo.min.js`,
         },
         plugins: [
-            scss(),
-            css(),
             typescript({
-                module: 'esnext',
+                compilerOptions: {
+                    declaration: false,
+                },
                 sourceMap: true,
+                module: 'esnext',
+                filterRoot: `./src/${current}/`,
             }),
             commonjs(),
             resolve(),
