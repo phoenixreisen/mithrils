@@ -10,11 +10,11 @@ describe('Slider Wrapper', () => {
     it('renders correctly', () => {
 
         const Page = {
-            view({state}) {
+            view({ state }) {
                 return ([
                     m(Slider, {
-                        parentState: state,
-                        slides: [Slide, Slide, Slide]
+                        name: 'slider-1',
+                        slides: [ Slide, Slide, Slide ]
                     }),
                 ]);
             },

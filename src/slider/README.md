@@ -1,7 +1,7 @@
-# Phoenix Slider "Swiper"
+# Phoenix Slider
 
 **Die Komponente stellt einen Mithril-Wrapper für den Slider "Swiper" zur Verfügung.** Diesem werden letztendlich
-nur noch eine Reihe von React-Komponenten übergeben. Der Rest ist vorkonfiguriert. Die Styles kommen aus dem [Design-System](https://design-system.phoenixreisen.net).
+nur noch eine Reihe von Mithril-Komponenten übergeben. Der Rest ist vorkonfiguriert. Die Styles kommen aus dem [Design-System](https://design-system.phoenixreisen.net).
 
 Die Komponente ist Teil des [Phoenix Reisen Design-Systems](https://design-system.phoenixreisen.net).
 
@@ -11,56 +11,31 @@ https://phoenixreisen.github.io/mithrils/slider/
 
 ## Anwendung
 
-[React](https://mithriljs.org/) wird benötigt.
+[Mithril](https://mithril.js.org/) wird benötigt.
 
 ```bash
 npm install --save @phoenixreisen/mithrils
 ```
 
 ```tsx
-import Slider from '@phoenixreisen/mithrils/slider';
-import React from 'react';
+import Slider from '@phoenixreisen/mithrils/src/slider';
+import m from 'mithril';
 
-export const Demo = ()  => {
+// Dummy Slide
+const Slide = m("article", { "class":"slide" }, "Slide Content");
 
-    return (
-        <Slider>
-            <div className="pa3">
-                <div>TEST REACT KOMPONENTE</div>
-                <div>TEST REACT KOMPONENTE</div>
-                <div>TEST REACT KOMPONENTE</div>
-                <div>TEST REACT KOMPONENTE</div>
-            </div>
-            <div className="pa3">
-                <div>TEST REACT KOMPONENTE</div>
-                <div>TEST REACT KOMPONENTE</div>
-                <div>TEST REACT KOMPONENTE</div>
-                <div>TEST REACT KOMPONENTE</div>
-            </div>
-            <div className="pa3">
-                <div>TEST REACT KOMPONENTE</div>
-                <div>TEST REACT KOMPONENTE</div>
-                <div>TEST REACT KOMPONENTE</div>
-                <div>TEST REACT KOMPONENTE</div>
-            </div>
-            <div className="pa3">
-                <div>TEST REACT KOMPONENTE</div>
-                <div>TEST REACT KOMPONENTE</div>
-                <div>TEST REACT KOMPONENTE</div>
-                <div>TEST REACT KOMPONENTE</div>
-            </div>
-        </Slider>
-    );
+const Page: m.Component<{}> = {
+    view({state}) {
+        return ([
+            m(Slider, {
+                name: 'slider-1',
+                slides: [ Slide, Slide, Slide ]
+            }),
+        ]);
+    },
 };
 
-ReactDOM.render(
-    <Router>
-        <Switch>
-            <Route path="/" render={() => <Demo />} />
-        </Switch>
-    </Router>,
-    document.querySelector('.example-app'),
-);
+m.mount(document.querySelector('.example-app'), Page);
 ```
 
 ## Github Page

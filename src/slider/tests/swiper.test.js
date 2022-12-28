@@ -14,8 +14,8 @@ test.spec('Slider Wrapper', () => {
             view({state}) {
                 return ([
                     m(Slider, {
-                        parentState: state,
-                        slides: [Slide, Slide, Slide]
+                        name: 'slider-1',
+                        slides: [ Slide, Slide, Slide ]
                     }),
                 ]);
             },

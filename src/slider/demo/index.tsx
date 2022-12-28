@@ -7,7 +7,13 @@ const Slide = m("article", {"class":"slide"}, "Slide Content");
 const Root: m.Component<{}> = {
     view() {
         return ([
-            m(Slider, { slides: [ Slide, Slide, Slide ] }),
+            <p><strong>I. Slider</strong></p>,
+            m(Slider, { name: 'swiper1', slides: [ Slide, Slide, Slide ] }),
+            
+            <div class="pv4"></div>,
+
+            <p><strong>II. Slider auf selber Seite</strong></p>,
+            m(Slider, { name: 'swiper1', slides: [ Slide, Slide, Slide ] }),
         ]);
     },
 };

@@ -11,7 +11,8 @@ Swiper.use([ Navigation, Pagination, Scrollbar ]);
 //--- View Types -----
 
 type Attrs = {
-    slides: Array<m.Vnode<any, any>>,
+    name: string,
+    slides: Array<m.Vnode>,
 }
 
 type State = {
@@ -23,14 +24,15 @@ type State = {
 export const Slider: m.Component<Attrs, State> = {
 
     oncreate(vnode: m.VnodeDOM<Attrs, State>) {
-        const { state } = vnode;
-        state.slider = new Swiper('.swiper', {
+        const { state, attrs } = vnode;
+
+        state.slider = new Swiper(`.${attrs.name}`, {
             pagination: {
-                clickable: true,
-                el: '.swiper-pagination',
                 renderBullet: (index, className) => {
                     return '<span class="' + className + '">' + (index + 1) + '</span>';
                 },
+                clickable: true,
+                el: `.swiper-pagination`,
             },
             navigation: {
                 nextEl: '.swiper-button-next',
@@ -45,15 +47,11 @@ export const Slider: m.Component<Attrs, State> = {
         });
     },
 
-    onupdate({ state }: m.Vnode<Attrs, State>) {
-        const { slider } = state;
-        slider.update?.();
-    },
-
     view({ attrs }: m.Vnode<Attrs>) {
-        const { slides } = attrs;
+        const { slides, name } = attrs;
+
         return (
-            <div class="swiper">
+            <div class={`swiper ${name}`}>
                 <div class="swiper-wrapper">
                     {slides.map((slide: m.Vnode<any, any>, index: number) => {
                         return <div class="swiper-slide" key={`slide-${index}`}>{slide}</div>;
