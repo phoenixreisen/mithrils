@@ -26,9 +26,15 @@ export const Slider: m.Component<Attrs, State> = {
     oncreate(vnode: m.VnodeDOM<Attrs, State>) {
         const { state, attrs } = vnode;
 
+        if(!attrs.name) {
+            throw new Error('No classname for Swiper instance given.');
+        } else if(!attrs.slides || attrs.slides.length === 0) {
+            throw new Error('Slider has no slides to present.');
+        }
+
         state.slider = new Swiper(`.${attrs.name}`, {
             pagination: {
-                renderBullet: (index, className) => {
+                renderBullet: (index: number, className: string) => {
                     return '<span class="' + className + '">' + (index + 1) + '</span>';
                 },
                 clickable: true,
