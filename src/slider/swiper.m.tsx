@@ -1,30 +1,32 @@
 import m from 'mithril';
 
 import Swiper, { 
+    Scrollbar,
     Navigation, 
     Pagination, 
-    Scrollbar 
+    SwiperOptions
 } from 'swiper';
 
 Swiper.use([ Navigation, Pagination, Scrollbar ]);
 
 //--- View Types -----
 
+type State = {
+    slider: Swiper,
+    options: SwiperOptions
+}
+
 type Attrs = {
     name: string,
     slides: Array<m.Vnode>,
-}
-
-type State = {
-    slider: Swiper
+    options?: SwiperOptions
 }
 
 //--- View -----
 
 export const Slider: m.Component<Attrs, State> = {
 
-    oncreate(vnode: m.VnodeDOM<Attrs, State>) {
-        const { state, attrs } = vnode;
+    oninit({ state, attrs }: m.Vnode<Attrs, State>) {
 
         if(!attrs.name) {
             throw new Error('No classname for Swiper instance given.');
@@ -32,7 +34,7 @@ export const Slider: m.Component<Attrs, State> = {
             throw new Error('Slider has no slides to present.');
         }
 
-        state.slider = new Swiper(`.${attrs.name}`, {
+        state.options = {
             pagination: {
                 renderBullet: (index: number, className: string) => {
                     return '<span class="' + className + '">' + (index + 1) + '</span>';
@@ -50,7 +52,15 @@ export const Slider: m.Component<Attrs, State> = {
             longSwipes: false,
             shortSwipes: true,
             simulateTouch: false,
-        });
+        };
+    },
+
+    oncreate({ state, attrs }: m.VnodeDOM<Attrs, State>) {
+
+        if(attrs.options) {
+            state.options = Object.assign(state.options, attrs.options);
+        }
+        state.slider = new Swiper(`.${attrs.name}`, state.options);
     },
 
     view({ attrs }: m.Vnode<Attrs>) {
