@@ -1,13 +1,9 @@
+import Swiper from 'swiper/swiper-bundle.esm';
 import m from 'mithril';
 
-import Swiper, { 
-    Scrollbar,
-    Navigation, 
-    Pagination, 
-    SwiperOptions
+import { 
+    SwiperOptions 
 } from 'swiper';
-
-Swiper.use([ Navigation, Pagination, Scrollbar ]);
 
 //--- View Types -----
 
