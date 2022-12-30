@@ -8,12 +8,12 @@ const Root: m.Component<{}> = {
     view() {
         return ([
             <p><strong>I. Slider</strong></p>,
-            m(Slider, { name: 'swiper1', slides: [ Slide, Slide, Slide ] }),
+            m(Slider, { name: 'swiper-1', slides: [ Slide, Slide, Slide ] }),
             
             <div class="pv4"></div>,
 
             <p><strong>II. Slider auf selber Seite</strong></p>,
-            m(Slider, { name: 'swiper1', slides: [ Slide, Slide, Slide ] }),
+            m(Slider, { name: 'swiper-2', slides: [ Slide, Slide, Slide ] }),
         ]);
     },
 };

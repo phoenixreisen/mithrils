@@ -32,17 +32,17 @@ export const Slider: m.Component<Attrs, State> = {
                     return '<span class="' + className + '">' + (index + 1) + '</span>';
                 },
                 clickable: true,
-                el: `.swiper-pagination`,
+                el: `.swiper-pagination-${attrs.name}`,
             },
             navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: `.swiper-button-next-${attrs.name}`,
+                prevEl: `.swiper-button-prev-${attrs.name}`,
             },
             scrollbar: {
-                el: '.swiper-scrollbar',
+                el: `.swiper-scrollbar-${attrs.name}`,
             },
-            longSwipes: true,
-            shortSwipes: false,
+            longSwipes: false,
+            shortSwipes: true,
             simulateTouch: false,
         });
     },
@@ -57,10 +57,10 @@ export const Slider: m.Component<Attrs, State> = {
                         return <div class="swiper-slide" key={`slide-${index}`}>{slide}</div>;
                     })}
                 </div>
-                <div class="swiper-scrollbar"></div>
-                <div class="swiper-button-prev"><i class="fas fa-arrow-circle-left"></i></div>
-                <div class="swiper-button-next"><i class="fas fa-arrow-circle-right"></i></div>
-                <div class="swiper-pagination"></div>
+                <div class={`swiper-scrollbar swiper-scrollbar-${name}`}></div>
+                <div class={`swiper-button-prev swiper-button-prev-${name}`}><i class="fas fa-arrow-circle-left"></i></div>
+                <div class={`swiper-button-next swiper-button-next-${name}`}><i class="fas fa-arrow-circle-right"></i></div>
+                <div class={`swiper-pagination swiper-pagination-${name}`}></div>
             </div>
         );
     }
