@@ -1,4 +1,4 @@
-import Swiper from 'swiper/swiper-bundle.esm';
+import Swiper from 'swiper/swiper-bundle.esm.js';
 import m from 'mithril';
 
 import { 
