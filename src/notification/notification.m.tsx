@@ -103,4 +103,4 @@ export const Notifications: m.Component<NotesAttrs> = {
 };
 
 export const Notification = Note as any;
-export default Notifications;
+export default Notifications as any;
