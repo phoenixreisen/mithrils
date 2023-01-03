@@ -1,9 +1,7 @@
-import { notes, Notifications, STATUS } from '../notification.m';
+import Notifications, { notes, STATUS } from '../notification.m';
 import m from 'mithril';
 
 //--- Variablen, Nodes & Konstanten -----
-
-const Notes = Notifications as any;
 
 const msg = (status: STATUS|undefined) => {
     return {
@@ -45,7 +43,7 @@ export const Demo = {
                     <hr />
                 </div>
 
-                <Notes list={notes} />
+                <Notifications list={notes} />
             </div>
         );
     }

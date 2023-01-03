@@ -1,9 +1,9 @@
-import Notification from './notification.demo';
+import Demo from './notification.demo';
 import m from 'mithril';
 
 const Root: m.Component<{}> = {
     view() {
-        return m(Notification);
+        return m(Demo);
     },
 };
 
