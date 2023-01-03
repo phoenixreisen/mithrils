@@ -1,8 +1,10 @@
-import Swiper from 'swiper/swiper-bundle.esm.js';
 import m from 'mithril';
 
-import { 
-    SwiperOptions 
+import Swiper, { 
+    Scrollbar,
+    Navigation, 
+    Pagination, 
+    SwiperOptions
 } from 'swiper';
 
 //--- View Types -----
@@ -45,9 +47,15 @@ export const Slider: m.Component<Attrs, State> = {
             scrollbar: {
                 el: `.swiper-scrollbar-${attrs.name}`,
             },
+            modules: [
+                Scrollbar,
+                Navigation,
+                Pagination,
+            ],
             longSwipes: false,
             shortSwipes: true,
             simulateTouch: false,
+            allowTouchMove: false,
         };
     },
 
