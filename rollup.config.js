@@ -14,6 +14,7 @@ const demos = [
     'tooltip',
     'timeline',
     'accordion',
+    'fuzzy-input',
     'notification',
     // 'banners', keine Demo
     // 'dropdown', keine Demo
