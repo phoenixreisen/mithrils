@@ -4,9 +4,9 @@ Phoenix Dropdown, umgesetzt mit Mithrils.
 
 Die Komponente ist Teil des [Phoenix Reisen Design-Systems](https://design-system.phoenixreisen.net).
 
-<!-- ## Demo -->
+## Demo
 
-<!-- https://phoenixreisen.github.io/mithrils/dropdown/ -->
+https://phoenixreisen.github.io/reacts/dropdown/
 
 ## Installation
 
