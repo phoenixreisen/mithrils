@@ -53,7 +53,7 @@ export const Tooltip: m.Component<Attrs, State> = {
                     onmouseenter={ !event || event === 'hover' ? () => state.showTip = true : undefined }
                     onmouseleave={ !event || event === 'hover' ? () => state.showTip = false : undefined }
                 >
-                    { iconname?.length  && <i class={`tooltip-icon fas ${iconname} ${text?.length ? 'mr2':''}`} /> }
+                    { iconname?.length  && <i class={`tooltip-icon fas ${iconname} ${text?.length ? 'mr1':''}`} /> }
                     { text?.length && <span class={'tooltip-text'}>{ text }</span> }
         
                     <span class={`tip ${!!TipComponent ? 'tip--component':''} ${!!position ? `tip--${position}`:'tip--below'} ${showTip ? 'tip--visible':'tip--hidden'}`}>
