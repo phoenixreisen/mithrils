@@ -40,7 +40,9 @@ export const Header: m.Component<Attrs> = {
 
                 {!!toggleNav && (
                     <div class="header__nav-btn">
-                        <a href="javascript:" title="Navigation ein- & ausblenden" class="nav-btn noprint"
+                        <a href="javascript:" 
+                            class="nav-btn noprint" 
+                            title="Navigation ein- & ausblenden"
                             onclick={() => toggleNav()}>
                             <i class="fas fa-bars"></i>
                         </a>
