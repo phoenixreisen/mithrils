@@ -27,11 +27,14 @@ import { Header, Topbar } from '@phoenixreisen/mithrils/header';
     url="https://www.phoenixreisen.com"         // verlinkt das Logo entsprechend
 />
 <Topbar
+    name="Slogan neben Logo"
     backUrl="https://www.phoenixreisen.com"
     toggleNav={() => console.info('toggled')}    // bewirkt, dass das Hamburger-Icon angezeigt wird
     toggleAvatar={() => console.info('toggled')} // bewirkt, dass das Avatar-Icon angezeigt wird
 />
 ```
+
+Siehe [View Types](https://github.com/phoenixreisen/mithrils/blob/main/src/header/topbar.m.tsx) für alle Parameter.
 
 ## Demo für Github Page
 

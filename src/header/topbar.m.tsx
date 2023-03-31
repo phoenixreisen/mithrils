@@ -9,6 +9,8 @@ type Attrs = {
     faviconTarget?: string,
     toggleNav?: (e?: Event) => void,
     toggleAvatar?: (e?: Event) => void,
+    AvatarComponent?: any,
+    NavComponent?: any
 }
 
 type State = {
@@ -51,6 +53,7 @@ export const Topbar: m.Component<Attrs, State> = {
 
     view({ attrs, state }: m.Vnode<Attrs, State>) {
         const { backUrl, faviconUrl, faviconTarget, name } = attrs;
+        const { AvatarComponent, NavComponent } = attrs;
         const { toggleNav, toggleAvatar } = attrs;
         const { isVisible } = state;
 
@@ -77,15 +80,23 @@ export const Topbar: m.Component<Attrs, State> = {
                                 onclick={(e: Event) => toggleAvatar(e)}>
                                 <i class="fas fa-user avatar__symbol"></i>
                             </a>
+                            {!!AvatarComponent && (
+                                <AvatarComponent />
+                            )}
                         </article>
                     )}
 
                     {!!toggleNav && (
-                        <a href="javascript:" class="nav-btn top-bar__nav-btn noprint"
-                            title="Navigation ein-/ausblenden"
-                            onclick={(e: Event) => toggleNav(e)}>
-                            <i class="fas fa-bars"></i>
-                        </a>
+                        <article class="top-bar__nav-btn noprint">
+                            <a href="javascript:" class="nav-btn"
+                                title="Navigation ein-/ausblenden"
+                                onclick={(e: Event) => toggleNav(e)}>
+                                <i class="fas fa-bars"></i>
+                            </a>
+                            {!!NavComponent && (
+                                <NavComponent />
+                            )}
+                        </article>
                     )}
                 </div>
             </article>
