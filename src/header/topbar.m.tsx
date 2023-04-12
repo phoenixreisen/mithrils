@@ -81,7 +81,7 @@ export const Topbar: m.Component<Attrs, State> = {
                                 <i class="fas fa-user avatar__symbol"></i>
                             </a>
                             {!!AvatarComponent && (
-                                <AvatarComponent />
+                                AvatarComponent
                             )}
                         </article>
                     )}
@@ -94,7 +94,7 @@ export const Topbar: m.Component<Attrs, State> = {
                                 <i class="fas fa-bars"></i>
                             </a>
                             {!!NavComponent && (
-                                <NavComponent />
+                                NavComponent
                             )}
                         </article>
                     )}
