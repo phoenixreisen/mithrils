@@ -3,13 +3,11 @@ import m from 'mithril';
 //--- View Types -----
 
 interface Attrs {
-    text?: string,
-    tooltip?: string,
-    iconname?: string,
     event?: 'hover' | 'click',
+    type?: 'component' | 'text',
     position?: 'above' | 'right' | 'below' | 'left',
-    color?: 'success' | 'danger' | 'warning' | 'info',
-    TipComponent?: m.Component | m.ClassComponent,
+    TextComponent: m.Component | m.ClassComponent,
+    TipComponent: m.Component | m.ClassComponent,
 }
 
 interface State {
@@ -25,26 +23,21 @@ interface State {
 export const Tooltip: m.Component<Attrs, State> = {
 
     oninit({ state, attrs }: m.Vnode<Attrs, State>) {
+        const { TextComponent, TipComponent } = attrs;
+
         state.showTip = false;
 
-        const { text, iconname } = attrs;           // Displayed base content
-        const { tooltip, TipComponent } = attrs;    // The tooltip on event
-
-        if(!text && !iconname) {
-            throw new Error('No content to display given. You have to set prop "text" and/or "iconname".');
-        } else if(!tooltip && !TipComponent) {
-            throw new Error('No tooltip to display given. You have to set prop "tooltip" or "TipComponent".');
-        } else if(tooltip && TipComponent) {
-            throw new Error('You cannot set both tooltip and TipCompoent.');
+        if(!TextComponent) {
+            throw new Error('No text given. You have to set prop "TextComponent" with a mithril component.');
+        } else if(!TipComponent) {
+            throw new Error('No tooltip given. You have to set prop "TipComponent" with a mithril component.');
         }
     },
 
     view: ({ state, attrs }: m.Vnode<Attrs, State>) => {
         const { showTip } = state;
-
-        const { text, iconname } = attrs;           // Displayed base content
-        const { tooltip, TipComponent } = attrs;    // The tooltip on event
-        const { position, color, event } = attrs;   // Styling & behaviour
+        const { TextComponent, TipComponent } = attrs;
+        const { position, event, type } = attrs;
 
         try {
             return (
@@ -53,18 +46,9 @@ export const Tooltip: m.Component<Attrs, State> = {
                     onmouseenter={ !event || event === 'hover' ? () => state.showTip = true : undefined }
                     onmouseleave={ !event || event === 'hover' ? () => state.showTip = false : undefined }
                 >
-                    { iconname?.length  && <i class={`tooltip-icon fas ${iconname} ${text?.length ? 'mr1':''}`} /> }
-                    { text?.length && <span class={'tooltip-text'}>{ text }</span> }
-        
-                    <span class={`tip ${!!TipComponent ? 'tip--component':''} ${!!position ? `tip--${position}`:'tip--below'} ${showTip ? 'tip--visible':'tip--hidden'}`}>
-                        {!!TipComponent && ( 
-                            TipComponent
-                        )}
-                        {!!tooltip && ( 
-                            <span class={color ? `tip--colored ${color}`:''}>
-                                { tooltip }
-                            </span>
-                        )}
+                    <span class="tooltip-text">{ TextComponent }</span>
+                    <span class={`tip ${type === 'component' ? 'tip--component':''} ${!!position ? `tip--${position}`:'tip--below'} ${showTip ? 'tip--visible':'tip--hidden'}`}>
+                        { TipComponent }
                     </span>
                 </article>
             );

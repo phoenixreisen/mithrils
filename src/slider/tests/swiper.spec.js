@@ -1,3 +1,4 @@
+import '../../../test-setup.js';
 import mq from "mithril-query";
 import m from "mithril";
 

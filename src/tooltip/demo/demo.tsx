@@ -35,52 +35,85 @@ export const Demo: m.Component = {
                 <div className="ma3">
                     <Tooltip 
                         event="click"
-                        color="warning"
                         position="right"
-                        iconname='fa-info-circle'
-                        TipComponent={<Content />}
+                        type="component"
+                        TipComponent={
+                            <Content />
+                        }
+                        TextComponent={
+                            <i class="fas fa-info-circle c-warning"></i>
+                        }
                     />
                 </div>
                 <div className="ma3">
                     <Tooltip 
-                        color="success"
                         position="left"
-                        text="Hover mich!"
-                        tooltip="Ich bin der 1. Tooltip!"
+                        TextComponent={
+                            <span>Hover mich!</span>
+                        }
+                        TipComponent={
+                            <span class="alert alert--success">
+                                Ich bin der 1. Tooltip
+                            </span>
+                        }
                     />
                 </div>
                 <div className="ma3">
                     <Tooltip 
-                        color="danger"
                         position="right"
-                        text="Hover mich auch!"
-                        tooltip="Ich bin der 2. Tooltip!"
+                        TextComponent={
+                            <span>Hover mich auch!</span>
+                        }
+                        TipComponent={
+                            <span class="alert alert--danger">
+                                Ich bin der 2. Tooltip
+                            </span>
+                        }
                     />
                 </div>
                 <div className="ma3">
                     <Tooltip 
-                        color="info"
                         position="below"
-                        text="Mich auch hovern!"
-                        tooltip="Ich bin der 3. Tooltip!"
+                        TextComponent={
+                            <span>Mich auch hovern!</span>
+                        }
+                        TipComponent={
+                            <span class="alert alert--info">
+                                Ich bin der 3. Tooltip
+                            </span>
+                        }
                     />
                 </div>
                 <div className="ma3">
                     <Tooltip 
-                        color="warning"
                         position="above"
-                        text="Hover mich endlich auch!"
-                        tooltip="Ich bin der 4. Tooltip!"
-                        iconname='fa-exclamation-triangle'
+                        TextComponent={
+                            <span>
+                                <i class="fas fa-exclamation-triangle mr2"></i>
+                                Hover mich endlich auch!
+                            </span>
+                        }
+                        TipComponent={
+                            <span class="alert alert--warning">
+                                Ich bin der 4. Tooltip!
+                            </span>
+                        }
                     />
                 </div>
                 <div className="ma3">
                     <Tooltip 
                         event="click"
-                        color="warning"
                         position="below"
-                        text="Ich rendere eine Komponente"
-                        TipComponent={<Content />}
+                        type="component"
+                        TipComponent={
+                            <Content />
+                        }
+                        TextComponent={
+                            <span>
+                                Ich rendere eine Komponente bei Klick
+                                <i class="fas fa-info-circle ml2"></i>
+                            </span>
+                        }
                     />
                 </div>
             </div>

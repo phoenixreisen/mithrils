@@ -1,4 +1,3 @@
-import ospec from 'ospec';
 import jsdom from 'jsdom';
 
 const dom = new jsdom.JSDOM('', {
@@ -11,8 +10,4 @@ Object.assign(global, {
     document: dom.window.document,
     HTMLElement: dom.window.HTMLElement,
     requestAnimationFrame: dom.window.requestAnimationFrame,
-});
-
-ospec.after(function() {
-    dom.window.close();
 });

@@ -13,8 +13,8 @@ test.spec('Tooltip should', () => {
 
         const Tooltip = mq({
             view: () => m(TooltipView, {
-                text: 'Tooltip',
-                tooltip: 'Hinweis!'
+                TextComponent: 'Tooltip',
+                TipComponent: 'Hinweis!'
             })
         });
 
@@ -28,7 +28,6 @@ test.spec('Tooltip should', () => {
         
         Tooltip.should.not.have('.tip--left');
         Tooltip.should.not.have('.tip--right');
-        Tooltip.should.not.have('.tip--colored');
         Tooltip.should.not.have('.tip--component');
     });
 
@@ -36,11 +35,9 @@ test.spec('Tooltip should', () => {
 
         const Tooltip = mq({
             view: () => m(TooltipView, {
-                text: 'Tooltip',
-                color: 'success',
                 position: 'left',
-                tooltip: 'HINWEIS!'
-                // TipComponent: m('div', {}, 'COMPONENT!'),s
+                TipComponent: 'HINWEIS!',
+                TextComponent: 'Tooltip',
             })
         });
 
@@ -50,8 +47,6 @@ test.spec('Tooltip should', () => {
 
         Tooltip.should.have(1, '.tip--left');
         Tooltip.should.have(1, '.tip--hidden');
-        Tooltip.should.have(1, '.tip--colored');
-        Tooltip.should.have(1, '.success');
         
         Tooltip.should.not.have('.tip--below');
         Tooltip.should.not.have('.tip--right');
@@ -62,8 +57,9 @@ test.spec('Tooltip should', () => {
 
         const Tooltip = mq({
             view: () => m(TooltipView, {
-                text: 'Tooltip',
                 position: 'right',
+                type: 'component',
+                TextComponent: 'Tooltip',
                 TipComponent: m('div', {}, 'COMPONENT!'),
             })
         });
@@ -78,16 +74,15 @@ test.spec('Tooltip should', () => {
         
         Tooltip.should.not.have('.tip--below');
         Tooltip.should.not.have('.tip--left');
-        Tooltip.should.not.have('.tip--colored');
-        Tooltip.should.not.have('.success');
     });
 
     test('change visibility on mouse event', () => {
 
         const Tooltip = mq({
             view: () => m(TooltipView, {
-                text: 'Tooltip',
                 position: 'right',
+                type: 'component',
+                TextComponent: 'Tooltip',
                 TipComponent: m('div', {}, 'COMPONENT!'),
             })
         });
@@ -113,8 +108,8 @@ test.spec('Tooltip should', () => {
         const Tooltip = mq({
             view: () => m(TooltipView, {
                 event: 'click',
-                text: 'Tooltip',
                 position: 'right',
+                TextComponent: 'Tooltip',
                 TipComponent: m('div', {}, 'COMPONENT!'),
             })
         });
