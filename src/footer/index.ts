@@ -1,6 +1,9 @@
-import Footer from './footer.m';
+import FooterIntern from './footer.intern.m';
+import FooterExtern from './footer.m';
 
 export { Config } from './config';
-export { Footer } from './footer.m';
 
-export default Footer;
+export const ExternFooter = FooterExtern;
+export const InternFooter = FooterIntern;
+
+export default FooterExtern;

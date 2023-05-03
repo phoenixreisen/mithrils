@@ -3,7 +3,7 @@ import mq from "mithril-query";
 import test from "ospec";
 import m from 'mithril';
 
-import { Config, Footer } from '../../../testfiles/footer/index.m.js';
+import Footer, { Config } from '../../../testfiles/footer/index.m.js';
 
 Object.assign(global, m);
 
