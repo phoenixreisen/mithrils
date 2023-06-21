@@ -15,11 +15,11 @@ npm install --save @phoenixreisen/mithrils
 ## Anwendung
 
 ```ts
-import <KOMPONENTE> from '@phoenixreisen/mithrils/<KOMPONENTE>';
+import <KOMPONENTE> from '@phoenixreisen/mithrils/src/<KOMPONENTE>';
 
 // zum Beispiel
-import Loader from '@phoenixreisen/mithrils/loader';
-import Header from '@phoenixreisen/mithrils/header';
+import Loader from '@phoenixreisen/mithrils/src/loader';
+import Header from '@phoenixreisen/mithrils/src/header';
 ```
 
 Weitere Informationen bzgl. Einbindung & Aufruf sind in der Readme der jeweiligen Komponente hinterlegt.
@@ -36,6 +36,7 @@ Weitere Informationen bzgl. Einbindung & Aufruf sind in der Readme der jeweilige
 - [Dropdown](./src/dropdown/README.md)
 - [Akkordeon](./src/accordion/README.md)
 - [Notifications](./src/notification/README.md)
+- [Fuzzy Suchfeld](./src/fuzzy-input/README.md)
 
 ## Demo für Github Page
 
