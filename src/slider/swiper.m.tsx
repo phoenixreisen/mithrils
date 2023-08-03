@@ -1,11 +1,16 @@
 import m from 'mithril';
 
-import Swiper, { 
+import Swiper from 'swiper';
+
+import {
+    SwiperOptions
+} from 'swiper/types';
+
+import { 
     Scrollbar,
     Navigation, 
-    Pagination, 
-    SwiperOptions
-} from 'swiper';
+    Pagination,
+} from 'swiper/modules';
 
 //--- View Types -----
 
