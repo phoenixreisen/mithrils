@@ -1,5 +1,5 @@
 import { MINLENGTH, THROTTLING, ID } from './fuzzy-input.consts';
-import { State, Attrs } from './fuzzy-input.types';
+import { State, Attrs } from './fuzzy-input.types';
 import m from 'mithril';
 
 //--- View Funktionen -----
@@ -28,8 +28,11 @@ export function isReady(input: string, state: State, attrs: Attrs): boolean {
         && !state.loading;
 }
 
-export function reset(state: State, e?: KeyboardEvent): void {
+export function reset(state: State, attrs?: Attrs, e?: KeyboardEvent): void {
     if(!e || e.key === 'Escape') {
+        if(attrs?.clearAfterLoad) {
+            setValue('', state, attrs);
+        }
         state.focused = -1;
         state.error = null;
         state.match = null;
@@ -118,7 +121,7 @@ export function load(choice: string, state: State, attrs: Attrs): Promise<unknow
             } else {
                 setValue(choice, state, attrs);
             }
-            reset(state);
+            reset(state, attrs);
         })
         .catch((error) => {
             state.error = error;

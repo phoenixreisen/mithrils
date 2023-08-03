@@ -257,6 +257,35 @@ test.spec('Fuzzy Input', () => {
         setTimeout(done, 50);
     });
 
+    test('should clear field when clearAfterLoad is set', (done) => {
+        const name = 'test-name';
+        const state = { 'value': 'test-na' };
+        const attrs = {
+            clearAfterLoad: true,
+            load: () => Promise.resolve({ type: 'success', result: 'bla' }),
+        };
+        Functions.load(name, state, attrs);
+        setTimeout(() => {
+            attrs.oninput 
+                ? test(attrs.value).equals('')
+                : test(state.value).equals('');
+        }, 10);
+
+        const state2 = {
+            'value': 'test-na'
+        };
+        const attrs2 = {
+            clearAfterLoad: false,
+            load: () => Promise.resolve({ type: 'success', result: 'bla' }),
+        };
+        Functions.load(name, state2, attrs2);
+        setTimeout(() => {
+            test(state2.value).equals(name);
+        }, 20);
+
+        setTimeout(done, 50);
+    });
+
     test('should replace placeholder correctly', (done) => {
         const load = (choice) => Promise.resolve(choice);
         const before = 'Irgendwas';

@@ -16,7 +16,7 @@ export const FuzzyInput: m.Component<Attrs, State> = {
     },
 
     oncreate({ state, attrs }: m.Vnode<Attrs, State>) {
-        events.ESCAPE = (e: KeyboardEvent) => reset(state, e);
+        events.ESCAPE = (e: KeyboardEvent) => reset(state, attrs, e);
         events.ARROW = (e: KeyboardEvent) => focus(state, attrs, e);
         document.body.addEventListener('keyup', events.ESCAPE, true);
         document.body.addEventListener('keydown', events.ARROW, true);

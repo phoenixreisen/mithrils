@@ -15,6 +15,7 @@ export type Attrs = {
     throttling?: number,
     withButton?: boolean,
     placeholder?: string,
+    clearAfterLoad?: boolean,
     inText?: {
         prefix: string,
         suffix: string,
