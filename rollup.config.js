@@ -11,6 +11,7 @@ const demos = [
     'header',
     'footer',
     'slider',
+    'webtext',
     'tooltip',
     'timeline',
     'accordion',

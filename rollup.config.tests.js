@@ -1,5 +1,6 @@
 import typescript from '@rollup/plugin-typescript';
 import resolve from "@rollup/plugin-node-resolve";
+import commonjs from '@rollup/plugin-commonjs';
 import copy from 'rollup-plugin-copy';
 import scss from 'rollup-plugin-scss';
 import url from '@rollup/plugin-url';
@@ -12,6 +13,7 @@ const components = [
     'header',
     'footer',
     'banners',
+    'webtext',
     'dropdown',
     'tooltip',
     'timeline',
@@ -35,6 +37,7 @@ const components = [
                 module: 'esnext',
                 lib: ["es5", "es6", "esnext", "dom"]
             }),
+            commonjs(),
             url({
                 limit: 0
             }),
