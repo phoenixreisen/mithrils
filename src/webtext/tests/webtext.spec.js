@@ -96,4 +96,18 @@ describe('Webtext should', () => {
         Webtext.should.have('.webtext');
         Webtext.should.have('.test-class');
     });
+
+    it('add a icon linked to webtext manager as suffix', () => {
+        const Webtext = mq({
+            view: () => m(WebtextView, {
+                webtexts: Webtexts,
+                webtextName: 'webtext3',
+                wtmLink: 'https://www.phoenixreisen.com',
+                wtmLinkTitle: 'Phoenix Website aufrufen',
+            }),
+        });
+        Webtext.should.have('.webtext a');
+        Webtext.should.have('.fa-external-link-alt');
+        Webtext.should.have(`a[title="Phoenix Website aufrufen"]`);
+    });
 });

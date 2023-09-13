@@ -14,6 +14,8 @@ interface Attrs {
     asPlainText?: boolean,
     showWebtextName?: boolean,
     allowedHtmlTags?: Array<string>,
+    wtmLinkTitle?: string,
+    wtmLink?: string,
 }
 
 interface State {
@@ -52,8 +54,8 @@ export const Webtext: m.Component<Attrs, State> = {
     },
 
     view({ attrs }: m.Vnode<Attrs, State>) {
-        const { cssClass } = attrs;
         const { webtexts, webtextName } = attrs;
+        const { cssClass, wtmLink, wtmLinkTitle } = attrs;
         const { allowedHtmlTags, showWebtextName, asPlainText } = attrs;
 
         const webtext = webtexts[webtextName] || null;
@@ -64,14 +66,27 @@ export const Webtext: m.Component<Attrs, State> = {
 
         if(!webtext) {
             return null;
+        } else {
+            return (
+                <article class={`webtext ${cssClass || ''}`} title={title}>
+                    <span>
+                        {asPlainText
+                            ? webtext
+                            : m.trust(striptags(webtext, (allowedHtmlTags || ALLOWED_HTML)))
+                        }
+                    </span>
+                    {wtmLink && (
+                        <a class="ml1" 
+                            href={wtmLink} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            title={wtmLinkTitle || 'Im Webtext-Manager öffnen'}>
+                            <i className="fas fa-external-link-alt" />
+                        </a>
+                    )}
+                </article>
+            );
         }
-        return (
-            <article class={`webtext ${cssClass || ''}`} title={title}>
-                {asPlainText
-                    ? webtext
-                    : m.trust(striptags(webtext, (allowedHtmlTags || ALLOWED_HTML))) }
-            </article>
-        );
     }
 };
 
