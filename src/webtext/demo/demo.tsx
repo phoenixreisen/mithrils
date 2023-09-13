@@ -71,6 +71,16 @@ export const Demo: m.Component = {
                 <Webtext
                     webtexts={Webtexts}
                     webtextName="webtext3"
+                    showWebtextName={true}
+                    wtmLink={'https://meinereise.phoenixreisen.com/cdn/mitarbeiter/webtext-verwaltung/#!form/tefra__text/MeinPhoenix'}
+                />
+
+                <h3>HTML-Webtext mit Link zum Webtext Manager</h3>
+
+                <Webtext
+                    webtexts={Webtexts}
+                    webtextName="webtext5"
+                    showWebtextName={true}
                     wtmLink={'https://meinereise.phoenixreisen.com/cdn/mitarbeiter/webtext-verwaltung/#!form/tefra__text/MeinPhoenix'}
                 />
             </section>

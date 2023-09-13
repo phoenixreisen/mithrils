@@ -69,21 +69,22 @@ export const Webtext: m.Component<Attrs, State> = {
         } else {
             return (
                 <article class={`webtext ${cssClass || ''}`} title={title}>
-                    <span>
+                    {(showWebtextName && wtmLink) && (
+                        <div class="f6">
+                            <a href={wtmLink} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                title={wtmLinkTitle || 'Im Webtext-Manager öffnen'}>
+                                <i className="fas fa-external-link-alt" /> Webtext ändern
+                            </a>
+                        </div>
+                    )}
+                    <div>
                         {asPlainText
                             ? webtext
                             : m.trust(striptags(webtext, (allowedHtmlTags || ALLOWED_HTML)))
                         }
-                    </span>
-                    {wtmLink && (
-                        <a class="ml1" 
-                            href={wtmLink} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            title={wtmLinkTitle || 'Im Webtext-Manager öffnen'}>
-                            <i className="fas fa-external-link-alt" />
-                        </a>
-                    )}
+                    </div>
                 </article>
             );
         }

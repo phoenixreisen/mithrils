@@ -102,6 +102,7 @@ describe('Webtext should', () => {
             view: () => m(WebtextView, {
                 webtexts: Webtexts,
                 webtextName: 'webtext3',
+                showWebtextName: true,
                 wtmLink: 'https://www.phoenixreisen.com',
                 wtmLinkTitle: 'Phoenix Website aufrufen',
             }),
@@ -109,5 +110,22 @@ describe('Webtext should', () => {
         Webtext.should.have('.webtext a');
         Webtext.should.have('.fa-external-link-alt');
         Webtext.should.have(`a[title="Phoenix Website aufrufen"]`);
+        Webtext.should.contain('Webtext ändern');
+    });
+
+    it('only show wtm link when showWebtextName is set', () => {
+        const Webtext = mq({
+            view: () => m(WebtextView, {
+                webtexts: Webtexts,
+                webtextName: 'webtext3',
+                wtmLink: 'https://www.phoenixreisen.com',
+                wtmLinkTitle: 'Phoenix Website aufrufen',
+                showWebtextName: false,
+            }),
+        });
+        Webtext.should.not.have('.webtext a');
+        Webtext.should.not.have('.fa-external-link-alt');
+        Webtext.should.not.have(`a[title="Phoenix Website aufrufen"]`);
+        Webtext.should.not.contain('Webtext ändern');
     });
 });
