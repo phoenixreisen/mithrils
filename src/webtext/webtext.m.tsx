@@ -74,7 +74,7 @@ export const Webtext: m.Component<Attrs, State> = {
                             <a href={wtmLink} 
                                 target="_blank" 
                                 rel="noopener noreferrer" 
-                                title={wtmLinkTitle || 'Im Webtext-Manager öffnen'}>
+                                title={wtmLinkTitle || `${webtextName} im Webtext-Manager öffnen`}>
                                 <i className="fas fa-external-link-alt" /> Webtext ändern
                             </a>
                         </div>

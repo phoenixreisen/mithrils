@@ -113,6 +113,18 @@ describe('Webtext should', () => {
         Webtext.should.contain('Webtext ändern');
     });
 
+    it('show webtextName in wtmLink title', () => {
+        const Webtext = mq({
+            view: () => m(WebtextView, {
+                webtexts: Webtexts,
+                webtextName: 'webtext3',
+                showWebtextName: true,
+                wtmLink: 'https://www.phoenixreisen.com',
+            }),
+        });
+        Webtext.should.have(`a[title="webtext3 im Webtext-Manager öffnen"]`);
+    });
+
     it('only show wtm link when showWebtextName is set', () => {
         const Webtext = mq({
             view: () => m(WebtextView, {
