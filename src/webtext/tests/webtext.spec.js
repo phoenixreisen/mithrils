@@ -30,7 +30,6 @@ describe('Webtext should', () => {
                 asPlainText: true
             }),
         });
-        
         Webtext.should.have('.webtext');
         Webtext.should.have('.test-class');
         Webtext.should.contain(Webtexts.webtext5);
@@ -139,5 +138,21 @@ describe('Webtext should', () => {
         Webtext.should.not.have('.fa-external-link-alt');
         Webtext.should.not.have(`a[title="Phoenix Website aufrufen"]`);
         Webtext.should.not.contain('Webtext ändern');
+    });
+
+    it('shows the alternative text if one is given but no webtext could be found', () => {
+        const altText = 'Ich werde stattdessen angezeigt';
+
+        const Webtext = mq({
+            view: () => m(WebtextView, {
+                webtexts: Webtexts,
+                showWebtextName: false,
+                webtextName: 'not-found',
+                altText: altText
+            }),
+        });
+        Webtext.should.have('.webtext');
+        Webtext.should.contain(altText);
+        Webtext.should.not.contain('Irgendwas anderes');
     });
 });

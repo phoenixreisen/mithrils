@@ -8,6 +8,7 @@ interface Webtexts {
 }
 
 interface Attrs {
+    altText?: string,
     cssClass?: string,
     webtexts: Webtexts,
     webtextName: string,
@@ -38,7 +39,9 @@ export const ALLOWED_HTML = [
 export const Webtext: m.Component<Attrs, State> = {
 
     oninit({ attrs }: m.Vnode<Attrs, State>) {
-        if(attrs.cssClass && typeof attrs.cssClass !== 'string') {
+        if(attrs.altText && typeof attrs.altText !== 'string') {
+            throw new Error('You have to set prop "altText" with a string or to not set it at all.');
+        } else if(attrs.cssClass && typeof attrs.cssClass !== 'string') {
             throw new Error('You have to set prop "cssClass" with a string or to not set it at all.');
         } else if(typeof attrs.webtexts !== 'object' || Object.keys(attrs.webtexts).length === 0) {
             throw new Error('You have to set prop "webtexts" with an object of key-string-pairs.');
@@ -54,7 +57,7 @@ export const Webtext: m.Component<Attrs, State> = {
     },
 
     view({ attrs }: m.Vnode<Attrs, State>) {
-        const { webtexts, webtextName } = attrs;
+        const { webtexts, webtextName, altText } = attrs;
         const { cssClass, wtmLink, wtmLinkTitle } = attrs;
         const { allowedHtmlTags, showWebtextName, asPlainText } = attrs;
 
@@ -64,7 +67,13 @@ export const Webtext: m.Component<Attrs, State> = {
             ? webtextName 
             : undefined;
 
-        if(!webtext) {
+        if(!webtext && altText) {
+            return (
+                <article class={`webtext ${cssClass || ''}`} title={title}>
+                    {altText}
+                </article>
+            )
+        } else if(!webtext) {
             return null;
         } else {
             return (
