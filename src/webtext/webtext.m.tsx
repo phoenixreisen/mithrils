@@ -70,7 +70,7 @@ export const Webtext: m.Component<Attrs, State> = {
         if(!webtext && altText) {
             return (
                 <article class={`webtext ${cssClass || ''}`} title={title}>
-                    {altText}
+                    { m.trust(striptags(altText, allowedHtmlTags || ALLOWED_HTML)) }
                 </article>
             )
         } else if(!webtext) {
