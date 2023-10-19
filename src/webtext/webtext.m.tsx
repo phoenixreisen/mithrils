@@ -39,9 +39,7 @@ export const ALLOWED_HTML = [
 export const Webtext: m.Component<Attrs, State> = {
 
     oninit({ attrs }: m.Vnode<Attrs, State>) {
-        if(attrs.altText && typeof attrs.altText !== 'string') {
-            throw new Error('You have to set prop "altText" with a string or to not set it at all.');
-        } else if(attrs.cssClass && typeof attrs.cssClass !== 'string') {
+        if(attrs.cssClass && typeof attrs.cssClass !== 'string') {
             throw new Error('You have to set prop "cssClass" with a string or to not set it at all.');
         } else if(typeof attrs.webtexts !== 'object' || Object.keys(attrs.webtexts).length === 0) {
             throw new Error('You have to set prop "webtexts" with an object of key-string-pairs.');
