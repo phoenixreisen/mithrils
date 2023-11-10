@@ -13,6 +13,10 @@ export const Webtexts = {
             keine <strong>Suite</strong> mehr. Das 'code'-Element, um <code><strong>dieses 
             Wort</strong></code> sollte gestript worden sein.
         </div>`,
+    'webtext6': `
+        Hier sind {{anzahl}} Platzhalter enthalten, die ersetzt werden. 
+        Die {{eigenschaft}} landen als erstes im Gefängnis. {{name}}
+    `,
 }
 
 export const Demo: m.Component = {
@@ -91,6 +95,19 @@ export const Demo: m.Component = {
                     showWebtextName={false}
                     webtextName="gibts-nicht"
                     altText={'Ich werde stattdessen angezeigt.'}
+                />
+
+                <h3>Webtext mit ersetzten Platzhaltern</h3>
+    
+                <Webtext
+                    webtexts={Webtexts}
+                    showWebtextName={false}
+                    webtextName="webtext6"
+                    placeholders={[
+                        ['{{anzahl}}', '3'],
+                        ['{{name}}', 'Hem Berger'],
+                        ['{{eigenschaft}}', 'aggressiven'],
+                    ]}
                 />
             </section>
         );

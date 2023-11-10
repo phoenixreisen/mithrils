@@ -30,6 +30,7 @@ interface Attrs {
     asPlainText?: boolean,              // Ausgabe als HTML (gestript) oder PlainText
     showWebtextName?: boolean,          // Zeigt den Namen des Webtextes als "title"-Attribut an
     allowedHtmlTags?: Array<string>,    // Falls nicht gesetzt, wird ein intern gesetztes Set genommen (s. webtext.m.tsx)
+    placeholders?: Array<[name, value]> // Platzhalter, die im Webtext ersetzt werden sollen. Siehe Demo.
 }
 
 // Aufruf
@@ -54,6 +55,11 @@ interface Attrs {
     asPlainText={false}
     showWebtextName={true}
     allowedHtmlTags={['a', 'span', 'strong', 'code']}
+    placeholders={[
+        ['{{name}}', 'Phoenix Reisen'],
+        ['{{business}}', 'Kreuzfahrten'],
+        ['{{standort}}', 'Bonn'],
+    ]}
 />
 ```
 

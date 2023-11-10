@@ -18,6 +18,10 @@ describe('Webtext should', () => {
                 keine <strong>Suite</strong> mehr. Das 'code'-Element, um <code><strong>dieses 
                 Wort</strong></code> sollte gestript worden sein.
             </div>`,
+        'webtext6': `
+            Hier sind {{anzahl}} Platzhalter enthalten, die ersetzt werden. 
+            Die {{eigenschaft}} landen als erstes im Gefängnis. {{name}}
+        `,
     };
 
     it('render with certain classes', () => {
@@ -154,5 +158,27 @@ describe('Webtext should', () => {
         Webtext.should.have('.webtext');
         Webtext.should.contain(altText);
         Webtext.should.not.contain('Irgendwas anderes');
+    });
+
+    it('replaces all given placeholders correctly with its expected value', () => {
+        const Webtext = mq({
+            view: () => m(WebtextView, {
+                webtexts: Webtexts,
+                webtextName: 'webtext6',
+                showWebtextName: false,
+                placeholders: [
+                    ['{{anzahl}}', '2'],
+                    ['{{name}}', 'Fabian'],
+                    ['{{eigenschaft}}', 'lieben'],
+                ]
+            }),
+        });
+        Webtext.should.have('.webtext');
+        Webtext.should.contain('2');
+        Webtext.should.contain('Fabian');
+        Webtext.should.contain('lieben');
+        Webtext.should.not.contain('{{name}}');
+        Webtext.should.not.contain('{{anzahl}}');
+        Webtext.should.not.contain('{{eigenschaft}}');
     });
 });
