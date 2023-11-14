@@ -1,6 +1,13 @@
 import striptags from 'striptags';
 import m from 'mithril';
 
+import MarkdownIt from 'markdown-it';
+import markdownIns from 'markdown-it-ins';
+import markdownMark from 'markdown-it-mark';
+import markdownAbbr from 'markdown-it-abbr';
+import markdownEmoji from 'markdown-it-emoji';
+import markdownDefList from 'markdown-it-deflist';
+
 //--- View Types -----
 
 interface Webtexts {
@@ -12,6 +19,7 @@ interface Attrs {
     cssClass?: string,
     webtexts: Webtexts,
     webtextName: string,
+    asMarkdown?: boolean,
     asPlainText?: boolean,
     showWebtextName?: boolean,
     allowedHtmlTags?: Array<string>,
@@ -36,6 +44,20 @@ export const ALLOWED_HTML = [
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'br', 'span',
 ];
 
+/**
+ * Instance of Markdown renderer.
+ * Plus some helpful plugins.
+ */
+const md = new MarkdownIt({
+    breaks: true,
+    linkify: true,
+});
+md.use(markdownIns);
+md.use(markdownMark);
+md.use(markdownAbbr);
+md.use(markdownEmoji);
+md.use(markdownDefList);
+
 //--- View Funktionen -----
 
 /**
@@ -46,12 +68,15 @@ export const ALLOWED_HTML = [
  * @param placeholders Array<[placeholder, value]>
  * @returns string
  */
-function getWebtext(webtexts: Webtexts, webtextName: string, placeholders?: Array<[string, string]>) {
+function getWebtext(webtexts: Webtexts, webtextName: string, asMarkDown = false, placeholders?: Array<[string, string]>) {
     let webtext = webtexts[webtextName] || null;
 
     placeholders?.forEach(([placeholder, value]) => {
         webtext = webtext?.replaceAll(placeholder, value) ?? null;
     });
+    if(webtext && asMarkDown) {
+        webtext = md.render(webtext);
+    }
     return webtext;
 }
 
@@ -60,7 +85,7 @@ function getWebtext(webtexts: Webtexts, webtextName: string, placeholders?: Arra
 export const Webtext: m.Component<Attrs, State> = {
 
     oninit({ attrs, state }: m.Vnode<Attrs, State>) {
-        const { webtexts, webtextName, placeholders } = attrs;
+        const { webtexts, webtextName, placeholders, asMarkdown } = attrs;
 
         if(attrs.cssClass && typeof attrs.cssClass !== 'string') {
             throw new Error('You have to set prop "cssClass" with a string or to not set it at all.');
@@ -74,6 +99,8 @@ export const Webtext: m.Component<Attrs, State> = {
             throw new Error('You have to set prop "showWebtextName" with a boolean or to not set it at all.');
         } else if(attrs.allowedHtmlTags && !Array.isArray(attrs.allowedHtmlTags)) {
             throw new Error('You have to set prop "allowedTags" with an array of strings.')
+        } else if(attrs.asMarkdown && attrs.asPlainText) {
+            throw new Error('You can not set both props "asMarkdown" and "asPlainText".');
         }
 
         Object.assign(state, {
@@ -84,7 +111,7 @@ export const Webtext: m.Component<Attrs, State> = {
         });
         
         state.update({
-            ...state, webtext: getWebtext(webtexts, webtextName, placeholders)
+            ...state, webtext: getWebtext(webtexts, webtextName, asMarkdown, placeholders)
         });
     },
 

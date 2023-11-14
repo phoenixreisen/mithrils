@@ -1,6 +1,7 @@
 import typescript from '@rollup/plugin-typescript';
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
 import copy from 'rollup-plugin-copy';
 import scss from 'rollup-plugin-scss';
 import url from '@rollup/plugin-url';
@@ -32,12 +33,15 @@ const components = [
         },
         plugins: [
             scss(),
-            resolve(),
             typescript({
                 module: 'esnext',
                 lib: ["es5", "es6", "esnext", "dom"]
             }),
             commonjs(),
+            json(),
+            resolve({
+                preferBuiltins: false
+            }),
             url({
                 limit: 0
             }),

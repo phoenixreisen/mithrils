@@ -20,8 +20,20 @@ describe('Webtext should', () => {
             </div>`,
         'webtext6': `
             Hier sind {{anzahl}} Platzhalter enthalten, die ersetzt werden. 
-            Die {{eigenschaft}} landen als erstes im Gefängnis. {{name}}
+            Die {{eigenschaft}} landen als erstes {{ort}}.
         `,
+        'webtext7': `
+## H2 Markdown Überschrift
+### H3 Markdown Überschrift
+
+==Etwas== Text mit *kursiv* und **fett** und einem {{placeholder}}.
+Hier noch ein Link zur Website: https://www.phoenixreisen.com/
+
+* Liste
+* mit
+* Punkten
+
+Hier wieder etwas Text. :-)`,
     };
 
     it('render with certain classes', () => {
@@ -144,7 +156,7 @@ describe('Webtext should', () => {
         Webtext.should.not.contain('Webtext ändern');
     });
 
-    it('shows the alternative text if one is given but no webtext could be found', () => {
+    it('show the alternative text if one is given but no webtext could be found', () => {
         const altText = 'Ich werde stattdessen angezeigt';
 
         const Webtext = mq({
@@ -160,25 +172,64 @@ describe('Webtext should', () => {
         Webtext.should.not.contain('Irgendwas anderes');
     });
 
-    it('replaces all given placeholders correctly with its expected value', () => {
+    it('replace all given placeholders correctly with its expected value', () => {
         const Webtext = mq({
             view: () => m(WebtextView, {
                 webtexts: Webtexts,
                 webtextName: 'webtext6',
                 showWebtextName: false,
                 placeholders: [
-                    ['{{anzahl}}', '2'],
-                    ['{{name}}', 'Fabian'],
-                    ['{{eigenschaft}}', 'lieben'],
+                    ['{{anzahl}}', '3'],
+                    ['{{ort}}', 'im Gefängnis'],
+                    ['{{eigenschaft}}', 'betrüger'],
                 ]
             }),
         });
         Webtext.should.have('.webtext');
-        Webtext.should.contain('2');
-        Webtext.should.contain('Fabian');
-        Webtext.should.contain('lieben');
-        Webtext.should.not.contain('{{name}}');
+        Webtext.should.contain('3');
+        Webtext.should.contain('betrüger');
+        Webtext.should.contain('im Gefängnis');
+        Webtext.should.not.contain('{{ort}}');
         Webtext.should.not.contain('{{anzahl}}');
         Webtext.should.not.contain('{{eigenschaft}}');
+
+        const Webtext2 = mq({
+            view: () => m(WebtextView, {
+                webtexts: Webtexts,
+                webtextName: 'webtext6',
+                showWebtextName: false,
+                placeholders: [
+                    ['{{anzahl}}', '3'],
+                    ['{{ort}}', 'in der Gosse'],
+                    ['{{eigenschaft}}', 'naiven'],
+                ]
+            }),
+        });
+        Webtext2.should.have('.webtext');
+        Webtext2.should.contain('3');
+        Webtext2.should.contain('naiven');
+        Webtext2.should.contain('in der Gosse');
+        Webtext2.should.not.contain('{{ort}}');
+        Webtext2.should.not.contain('{{anzahl}}');
+        Webtext2.should.not.contain('{{eigenschaft}}');
+    });
+
+    it('render contained markdown correctly', () => {
+        const Webtext = mq({
+            view: () => m(WebtextView, {
+                asMarkdown: true,
+                webtexts: Webtexts,
+                webtextName: 'webtext7',
+            }),
+        });
+        Webtext.should.have('.webtext');
+        Webtext.should.have('h2');
+        Webtext.should.have('h3');
+        Webtext.should.have('ul');
+        Webtext.should.have('em');
+        Webtext.should.have('strong');
+        Webtext.should.not.contain('*');
+        Webtext.should.not.contain('#');
+        Webtext.should.not.contain(':-');
     });
 });
