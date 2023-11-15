@@ -57,7 +57,7 @@ const components = [
             'swiper',
             'mithril',
             'clipboard',
-            '@phoenixreisen/notification'
+            '@phoenixreisen/mithrils/src/notification'
         ]
     };
 });

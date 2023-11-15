@@ -1,4 +1,4 @@
-import { notes } from '@phoenixreisen/notification';
+import { notes } from '../notification';
 import ClipboardJS from 'clipboard';
 import m from 'mithril';
 
@@ -21,8 +21,10 @@ interface State {
 //--- View Funktionen -----
 
 const saveToClipboard = (state: State) => {
-    notes.add({text: 'In die Zwischenablage kopiert.'});
     state.showClipboardMsg = true;
+    notes?.add({
+        text: 'In die Zwischenablage kopiert.'
+    });
     setTimeout(() => {
         state.showClipboardMsg = false;
         m.redraw();
