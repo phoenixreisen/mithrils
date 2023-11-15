@@ -71,11 +71,16 @@ md.use(markdownDefList);
 function getWebtext(webtexts: Webtexts, webtextName: string, asMarkDown = false, placeholders?: Array<[string, string]>) {
     let webtext = webtexts[webtextName] || null;
 
-    placeholders?.forEach(([placeholder, value]) => {
-        webtext = webtext?.replaceAll(placeholder, value) ?? null;
-    });
-    if(webtext && asMarkDown) {
-        webtext = md.render(webtext);
+    if(webtext) {
+        webtext = webtext.trim();
+
+        placeholders?.forEach?.(([placeholder, value]) => {
+            webtext = webtext?.replaceAll(placeholder, value) ?? null;
+        });
+
+        if(asMarkDown) {
+            webtext = md.render(webtext);
+        }
     }
     return webtext;
 }
@@ -101,6 +106,8 @@ export const Webtext: m.Component<Attrs, State> = {
             throw new Error('You have to set prop "allowedTags" with an array of strings.')
         } else if(attrs.asMarkdown && attrs.asPlainText) {
             throw new Error('You can not set both props "asMarkdown" and "asPlainText".');
+        } else if(attrs.altText && typeof attrs.altText !== 'string') {
+            throw new Error('You have to set prop "altText" with a string (even when it contains HTML) or to not set it at all.');
         }
 
         Object.assign(state, {
@@ -130,7 +137,7 @@ export const Webtext: m.Component<Attrs, State> = {
         if(!webtext && altText) {
             return (
                 <article class={`webtext ${cssClass || ''}`} title={title}>
-                    { m.trust(striptags(altText, allowedHtmlTags || ALLOWED_HTML)) }
+                    { m.trust(striptags(altText.trim(), allowedHtmlTags || ALLOWED_HTML)) }
                 </article>
             );
         } else if(!webtext) {

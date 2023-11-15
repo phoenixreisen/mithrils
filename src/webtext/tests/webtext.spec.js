@@ -172,6 +172,26 @@ Hier wieder etwas Text. :-)`,
         Webtext.should.not.contain('Irgendwas anderes');
     });
 
+    it('render HTML in an alternative text string', () => {
+        const altText = '<p>Ich bin <em>HTML</em> als <strong>String</strong>, werde aber gerendert.</p>';
+
+        const Webtext = mq({
+            view: () => m(WebtextView, {
+                webtexts: Webtexts,
+                showWebtextName: false,
+                webtextName: 'not-found',
+                altText: altText
+            }),
+        });
+        Webtext.should.have('.webtext');
+        Webtext.should.not.contain('Irgendwas anderes');
+        
+        Webtext.should.have('p');
+        Webtext.should.have('em');
+        Webtext.should.have('strong');
+        Webtext.should.contain('Ich bin HTML als String, werde aber gerendert.');
+    });
+
     it('replace all given placeholders correctly with its expected value', () => {
         const Webtext = mq({
             view: () => m(WebtextView, {

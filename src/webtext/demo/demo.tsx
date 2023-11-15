@@ -106,7 +106,14 @@ export const Demo: m.Component = {
                     webtexts={Webtexts}
                     showWebtextName={false}
                     webtextName="gibts-nicht"
-                    altText={'Ich werde stattdessen angezeigt.'}
+                    altText={'Ich werde stattdessen angezeigt. Ich bin Plain Text.'}
+                />
+
+                <Webtext
+                    webtexts={Webtexts}
+                    showWebtextName={false}
+                    webtextName="gibts-nicht"
+                    altText={'<p>Ich bin <em>HTML</em> als <strong>String</strong>, werder aber gerendert.</p>'}
                 />
 
                 <h3>Webtext mit ersetzten Platzhaltern</h3>
