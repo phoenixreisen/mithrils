@@ -5,8 +5,8 @@ import MarkdownIt from 'markdown-it';
 import markdownIns from 'markdown-it-ins';
 import markdownMark from 'markdown-it-mark';
 import markdownAbbr from 'markdown-it-abbr';
-import markdownEmoji from 'markdown-it-emoji';
 import markdownDefList from 'markdown-it-deflist';
+import { full as markdownEmoji } from 'markdown-it-emoji';
 
 //--- View Types -----
 
